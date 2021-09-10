@@ -1,0 +1,9 @@
+.header-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 170px;
+    .icon{
+        width: 25px;
+    }
+}

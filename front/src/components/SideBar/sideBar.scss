@@ -1,0 +1,19 @@
+.sidebar{
+    width: 325px;
+    padding: 10px;
+    position: fixed;
+    right: 160px;
+    &__top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .user{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            &__name{
+                margin-left: 10px;
+            }
+        }
+    }
+}

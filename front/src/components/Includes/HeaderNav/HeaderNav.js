@@ -12,7 +12,7 @@ const HeaderNav = () => {
     const location = useLocation();
 
     return(
-        <div class="header-nav">
+        <div className="header-nav">
             <Link to="/">
                 {location.pathname === '/' ? <img className="icon" src={ BlackHome } alt="home"/> : <img className="icon" src={ WhiteHome } alt="home" />}
             </Link>

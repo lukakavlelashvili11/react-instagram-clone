@@ -1,0 +1,101 @@
+.auth{
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    &__inner{
+        background: white;
+        border: 1px solid rgb(219,219,219);
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .logo{
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .form{
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            .input{
+                width: 100%;
+                margin-top: 10px;
+                height: 30px;
+                border: 1px solid rgb(219,219,219);
+                background: rgb(250,250,250);
+                padding-left: 10px;
+                outline: none;
+            }
+            .button{
+                width: 100%;
+                margin-top: 20px;
+                background: rgb(0,149,246);
+                border: none;
+                height: 30px;
+                color: white;
+                font-size: 15px;
+                border-radius: 3px;
+            }
+        }
+        .or{
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            color: gray;
+            font-size: 14px;
+            .line{
+                width: 40%;
+                height: 1px;
+                background: rgb(219,219,219);
+            }
+        }
+        .facebook-login{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            .facebook-text{
+                margin-left: 5px;
+                font-size: 13px;
+                font-weight: bold;
+                color: #385185;
+                cursor: pointer;
+            }
+        }
+        .forgot-password{
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 13px;
+            color: #385185;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+    }
+    .create-account{
+        height: 60px;
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        border: 1px solid rgb(219,219,219);
+        .create-account__text{
+            font-size: 14px;
+            &--blue{
+                color: rgb(0,149,246);
+                font-weight: bold;
+                margin-left: 3px;
+            }
+        }
+    }
+}

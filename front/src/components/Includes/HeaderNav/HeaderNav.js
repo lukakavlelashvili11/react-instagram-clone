@@ -4,6 +4,7 @@ import BlackInbox from '../../../assets/img/headerIcons/Inbox/black-inbox.png'
 import WhiteInbox from '../../../assets/img/headerIcons/Inbox/white-inbox.png'
 import BlackExplore from '../../../assets/img/headerIcons/Explore/black-explore.webp'
 import WhiteExplore from '../../../assets/img/headerIcons/Explore/white-explore.png'
+import UserPic from '../../UserPic/UserPic'
 import Heart from '../Heart/Heart'
 import './headerNav.scss'
 import { useLocation,Link } from 'react-router-dom'
@@ -23,6 +24,7 @@ const HeaderNav = () => {
                 {location.pathname === '/explore' ? <img className="icon" src={ BlackExplore } alt="explore"/> : <img className="icon" src={ WhiteExplore } alt="explore" />}
             </Link>
             <Heart/>
+            <UserPic size={25}/>
         </div>
     )
 }

@@ -6,10 +6,15 @@ import LogIn from './components/Auth/LogIn'
 import Default from './components/layouts/Default'
 import Auth from './components/layouts/Auth'
 import { Route,Switch } from 'react-router-dom'
+import { useState } from 'react'
 
 function App() {
 
-  const state = false;
+  // const [state,setState] = useState(false);
+  const state = true;
+  // function show(){
+  //   setState(!state);
+  // }
   
   return (
     <div>

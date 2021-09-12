@@ -1,6 +1,9 @@
 import './post.scss'
 import test from './roxi.jpg'
 import UserPic from '../UserPic/UserPic'
+import Reacts from './Reacts'
+import Description from './Description'
+import Comments from './Comments'
 
 const Post = ({ num }) => {
     return(
@@ -13,6 +16,11 @@ const Post = ({ num }) => {
             </div>
             <div className="post__content">
                 <img src={test} className="image"/>
+            </div>
+            <div className="user-actions">
+                <Reacts/>
+                <Description/>
+                <Comments/>
             </div>
         </div>
     )

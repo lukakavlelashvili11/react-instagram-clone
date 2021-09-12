@@ -1,8 +1,8 @@
 .sidebar{
     width: 325px;
-    padding: 10px;
+    padding: 25px;
     position: fixed;
-    right: 160px;
+    right: 130px;
     &__top{
         display: flex;
         justify-content: space-between;
@@ -13,7 +13,11 @@
             align-items: center;
             &__name{
                 margin-left: 10px;
+                font-size: 15px;
             }
+        }
+        .switch{
+            font-size: 14px;
         }
     }
 }

@@ -4,6 +4,7 @@ import UserPic from '../UserPic/UserPic'
 import Reacts from './Reacts'
 import Description from './Description'
 import Comments from './Comments'
+import AddComment from './AddComment'
 
 const Post = ({ num }) => {
     return(
@@ -22,6 +23,7 @@ const Post = ({ num }) => {
                 <Description/>
                 <Comments/>
             </div>
+            <AddComment/>
         </div>
     )
 }

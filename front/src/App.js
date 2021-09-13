@@ -1,6 +1,6 @@
 import Header from './components/Includes/Header/Header'
 import Main from './pages/Main/Main'
-import Inbox from './pages/Inbox'
+import Inbox from './pages/Inbox/Inbox'
 import Explore from './pages/Explore'
 import LogIn from './components/Auth/LogIn'
 import Default from './components/layouts/Default'

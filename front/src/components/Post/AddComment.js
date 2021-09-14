@@ -2,9 +2,7 @@ const AddComment = () => {
     return(
         <div className="add-comment">
             <span>smile</span>
-            <div className="add-comment__input">
-                <input type="text" placeholder="Add a comment..."/>
-            </div>
+            <input className="add-comment__input" type="text" placeholder="Add a comment..."/>
             <span>Post</span>
         </div>
     )

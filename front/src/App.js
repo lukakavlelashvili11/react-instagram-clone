@@ -7,11 +7,16 @@ import Default from './components/layouts/Default'
 import Auth from './components/layouts/Auth'
 import { Route,Switch } from 'react-router-dom'
 import { useState } from 'react'
+import { useSelector,useDispatch } from 'react-redux' 
+import { register } from './store/actions'
 
 function App() {
 
+  const state = useSelector(state => state.loggedIn)
+  const dispatch = useDispatch();
+
   // const [state,setState] = useState(false);
-  const state = false;
+  // const state = false;
   // function show(){
   //   setState(!state);
   // }
@@ -35,6 +40,8 @@ function App() {
       </Default>
       :
       <Auth>
+        {state ? 'true' : 'false'}
+        <button onClick={() => dispatch(register())}>click</button>
         <LogIn/>
       </Auth>}
     </div>

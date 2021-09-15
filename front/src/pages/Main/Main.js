@@ -6,8 +6,8 @@ const data = [1,2,3];
 
 const Main = () => {
     return(
-        <div class="main-page">
-            <div>
+        <div className="main-page">
+            <div className="posts">
                 {data.map(num => <Post num={num}/>)}
             </div>
             <div>

@@ -1,8 +1,41 @@
 import InstagramLogo from '../../assets/img/insta-logo.png'
 import FacebookLogo from '../../assets/img/facebook-logo.png'
 import './auth.scss'
+import { useState } from 'react'
+import axios from 'axios'
 
 const LogIn = () => {
+
+    const apiClient = axios.create({
+
+        baseURL: 'http://localhost:8000',
+    
+        withCredentials: true,
+    
+    });
+
+    // const [userData,setUserData] = useState({
+    //     name: '',
+    //     ln: ''
+    // });
+
+    function show(){
+        // console.log(userData)
+        // axios.get('http://localhost:8000/api/test').then((red) => {
+        //     console.log(red);
+        // })
+        apiClient.get("/sanctum/csrf-cookie").then((response) => {
+            apiClient.post("/api/login", {
+                email: 'luka@gmail.com',
+                password: 'luka12345'
+              })
+              .then((response) => {
+                console.log(response);
+              });
+            // console.log(response);
+          });
+    }
+
     return (
         <div className="auth">
             <div className="auth__inner">
@@ -12,7 +45,7 @@ const LogIn = () => {
                         <input className="input" type="text" placeholder="email"/>
                         <input className="input" type="password" placeholder="password"/>
                     </div>
-                    <button className="button">
+                    <button className="button" onClick={show}>
                         <span>Log In</span>
                     </button>
                 </div>

@@ -1,7 +1,7 @@
 import InstagramLogo from '../../assets/img/insta-logo.png'
 import FacebookLogo from '../../assets/img/facebook-logo.png'
 import './auth.scss'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import axios from 'axios'
 
 const LogIn = () => {
@@ -13,6 +13,14 @@ const LogIn = () => {
         withCredentials: true,
     
     });
+
+    // useEffect(() => {
+        
+    //         apiClient.get('/api/user').then(res => {console.log(res)});
+      
+        
+        
+    // }, [])
 
     // const [userData,setUserData] = useState({
     //     name: '',
@@ -30,7 +38,7 @@ const LogIn = () => {
                 password: 'luka12345'
               })
               .then((response) => {
-                console.log(response);
+                console.log(response.data);
               });
             // console.log(response);
           });

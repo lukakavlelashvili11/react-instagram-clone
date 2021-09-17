@@ -19,13 +19,6 @@ const LogIn = () => {
     //         apiClient.get('/api/user').then(res => {console.log(res)});
       
         
-        
-    // }, [])
-
-    // const [userData,setUserData] = useState({
-    //     name: '',
-    //     ln: ''
-    // });
 
     function show(){
         // console.log(userData)

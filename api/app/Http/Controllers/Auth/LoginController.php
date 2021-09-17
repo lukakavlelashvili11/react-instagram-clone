@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,18 +11,32 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function logIn(Request $request){
-        if(Auth::check()){
-            return 'registered';
-        }
-        else{
-            if(Auth::attempt($request->only('email','password'))){
-                return 'successs';
-            }else{
-                throw new AuthenticationException();
-            }
+        // if(Auth::check()){
+        //     return 'registered';
+        // }
+        // else{
+        //     if(Auth::attempt($request->only('email','password'))){
+        //         return 'successs';
+        //     }else{
+        //         throw new AuthenticationException();
+        //     }
+        // }
+        // User::create([
+        //     'name' => 'luka',
+        //     'email' => "luka3@gmail.com",
+        //     'password' => 'luka12345'
+        // ]);
+        $credentials = [
+            'email' => 'luka3@gmail.com',
+            'password' => 'luka12345',
+        ];
+        if(Auth::attempt($credentials)){
+            return 'successs';
+        }else{
+            throw new AuthenticationException();
         }
         // return json_encode($request->email);
         // return response()->json($request->email);
-        // return $request->only('email','password');
+        // return $request->email;
     }
 }

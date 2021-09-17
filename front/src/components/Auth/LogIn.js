@@ -1,7 +1,7 @@
 import InstagramLogo from '../../assets/img/insta-logo.png'
 import FacebookLogo from '../../assets/img/facebook-logo.png'
 import './auth.scss'
-import { useState,useEffect } from 'react'
+// import { useState,useEffect } from 'react'
 import axios from 'axios'
 
 const LogIn = () => {
@@ -11,6 +11,11 @@ const LogIn = () => {
         baseURL: 'http://localhost:8000',
     
         withCredentials: true,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'Content-Type': 'application/json',
+            Accept: 'application/json'
+          }
     
     });
 
@@ -18,14 +23,15 @@ const LogIn = () => {
         
     //         apiClient.get('/api/user').then(res => {console.log(res)});
       
-        
+        // useEffect(()=>{console.log(cookie)},[]);
 
     function show(){
+
         // console.log(userData)
         // axios.get('http://localhost:8000/api/test').then((red) => {
         //     console.log(red);
         // })
-        apiClient.get("/sanctum/csrf-cookie").then((response) => {
+        apiClient.get("/sanctum/csrf-cookie").then(() => {
             apiClient.post("/api/login", {
                 email: 'luka@gmail.com',
                 password: 'luka12345'

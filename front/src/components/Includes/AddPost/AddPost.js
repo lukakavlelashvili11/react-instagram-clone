@@ -2,6 +2,8 @@ import AddPostIcon from '../../../assets/img/headerIcons/add-post.png'
 import Modal from '../../Modal/Modal'
 import './addPost.scss'
 import { useState,useRef } from 'react'
+import { useDispatch } from 'react-redux'
+import { updatePosts } from '../../../store/actions/updatePosts'
 import axios from 'axios'
 
 const AddPost = () => {
@@ -17,9 +19,9 @@ const AddPost = () => {
     const [modal,setModal] = useState(false);
     const [choosenImgURL,setImgURL] = useState('');
     const [image,setImage] = useState(null);
-    // const [postText,setPostText] = useState('');
     const postText = useRef();
     const fileInput = useRef();
+    const dispatch = useDispatch();
 
     function browseFiles(){
         fileInput.current.click();
@@ -47,8 +49,9 @@ const AddPost = () => {
                 'content-type': 'multipart/form-data'
             }
         })
-        .then(res => {
+        .then(() => {
             setModal(false);
+            dispatch(updatePosts());
         })
     }
    

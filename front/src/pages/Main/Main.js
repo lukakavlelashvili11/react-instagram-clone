@@ -2,19 +2,19 @@ import Post from '../../components/Post/Post'
 import SideBar from '../../components/SideBar/SideBar'
 import './main.scss'
 import { useState,useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import api from '../../utils/api'
-
-const data = [1,2,3];
 
 const Main = () => {
 
     const [posts,setPosts] = useState([]);
+    const updatedState = useSelector(state => state.updated);
 
     useEffect(async () => {
         const res = await api.get('/api/post');
         console.log(res.data)
         setPosts(res.data);
-    },[])
+    },[updatedState])
 
     return(
         <div className="main-page">

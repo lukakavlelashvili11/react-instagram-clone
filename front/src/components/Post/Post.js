@@ -1,5 +1,4 @@
 import './post.scss'
-import test from './roxi.jpg'
 import UserPic from '../UserPic/UserPic'
 import Reacts from './Reacts'
 import Description from './Description'
@@ -21,9 +20,9 @@ const Post = ({ data }) => {
             <div className="user-actions">
                 <Reacts/>
                 <Description data={ data }/>
-                <Comments/>
+                <Comments data={data}/>
             </div>
-            <AddComment/>
+            <AddComment data={data}/>
         </div>
     )
 }

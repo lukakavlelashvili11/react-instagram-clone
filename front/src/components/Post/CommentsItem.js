@@ -1,8 +1,8 @@
-const CommentsItem = () => {
+const CommentsItem = ({ data }) => {
     return(
         <div className="comments-item">
-            <span className="comments-item__user-name">vigac yle</span>
-            <span className="comments-item__text">asdfas sdfg sdfg sdfg sdfg sdfgsdrtyerty dfgdfg dgh fgdrtyty</span>
+            <span className="comments-item__user-name">{ data.user.name }</span>
+            <span className="comments-item__text">{ data.text }</span>
         </div>
     )
 }

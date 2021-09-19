@@ -7,7 +7,9 @@ const Stories = () => {
     const UserProfile = () => {
         return(
             <div className="user-profile">
-                <UserPic size={50}/>
+                <div className="profile-pic">
+                    <UserPic size={50} hasStory/>
+                </div>
                 <div className="user-name">
                     <span>luka kavlelashvili</span>
                 </div>
@@ -16,7 +18,7 @@ const Stories = () => {
     }
     return(
         <div className="stories">
-            {data.map(d => <UserProfile/>)}
+            {data.map(d => <UserProfile key={d}/>)}
         </div>
     )
 }

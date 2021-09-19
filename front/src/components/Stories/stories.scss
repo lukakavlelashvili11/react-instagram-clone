@@ -1,27 +1,39 @@
 .stories{
-    width: 600px;
+    width: 580px;
     display:flex;
     justify-content: flex-start;
     align-items: center;
+    overflow: hidden;
+    background: white;
+    padding: 10px;
+    border: 1px solid rgb(219,219,219);
 }
 .user-profile{
     // text-align: center;
-    border:1px solid black;
     // display: flex;
     // justify-content: center;
     // flex-direction: column;
 
-    // :not(:first-child){
-    //     margin-left: 30px;
-    // }
-    width: 100px;
+    &:not(:first-child){
+        margin-left: 10px;
+    }
+    width: 70px;
     .user-name{
-        border:1px solid black;
-        width: 100%;
-        overflow: hidden;
-        text-align: center;
+        
+        // overflow: hidden;
+        // text-align: center;
+        
         span{
-            white-space: nowrap
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: calc(100%);
+            display: block;
+            overflow: hidden;
+            font-size: 12px;
         }
+    }
+    .profile-pic{
+        display: flex;
+        justify-content: center;
     }
 }

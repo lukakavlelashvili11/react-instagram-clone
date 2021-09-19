@@ -15,7 +15,10 @@ class PostRepository{
     public function get(): Collection{
         return $this->post->with([
             'user',
-            'comment' => function($q){
+            'comments' => function($q){
+                $q->with('user')->latest('created_at');
+            },
+            'likes' => function($q){
                 $q->with('user')->latest('created_at');
             }
         ])

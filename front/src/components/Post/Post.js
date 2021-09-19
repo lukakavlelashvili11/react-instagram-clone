@@ -18,7 +18,7 @@ const Post = ({ data }) => {
                 <img src={ data.imageurl } className="image"/>
             </div>
             <div className="user-actions">
-                <Reacts/>
+                <Reacts data={data}/>
                 <Description data={ data }/>
                 <Comments data={data}/>
             </div>

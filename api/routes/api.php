@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,6 @@ Route::get('/test',function(){
 });
 
 Route::post('/login',[LoginController::class,'logIn']);
+
+Route::post('/post/save',[PostController::class,'store']);
+Route::get('/post',[PostController::class,'get']);

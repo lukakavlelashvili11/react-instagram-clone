@@ -1,10 +1,9 @@
-const Description = () => {
+const Description = ({ data }) => {
     return(
         <div className="description">
-            <span className="description__user-name">lukako kavlelasvhili</span>
+            <span className="description__user-name">{ data.user.name }</span>
             <span className="description__text">
-                lorem dfgsfgsdfgsdfgsf s sfdgsdfg sdfg sdfgsdf gs tert dfgsdfg dy rgsfg lorem:100
-                fgsdfgsr dfsjsd dri
+                { data.text }  
             </span>
         </div>
     )

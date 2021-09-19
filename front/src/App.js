@@ -6,7 +6,6 @@ import LogIn from './components/Auth/LogIn'
 import Default from './components/layouts/Default'
 import Auth from './components/layouts/Auth'
 import { Route,Switch } from 'react-router-dom'
-import { useState } from 'react'
 import { useSelector,useDispatch } from 'react-redux' 
 import { register } from './store/actions'
 

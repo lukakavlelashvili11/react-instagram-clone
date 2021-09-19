@@ -5,7 +5,7 @@ const SideBar = () => {
     return(
         <div className="sidebar">
             <div className="sidebar__top">
-                <div class="user">
+                <div className="user">
                     <UserPic size={55}/>
                     <div className="user__name">lukako kavlelashvili</div>
                 </div>

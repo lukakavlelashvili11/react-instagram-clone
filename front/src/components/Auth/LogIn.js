@@ -21,6 +21,7 @@ const LogIn = () => {
         // useEffect(()=>{console.log(cookie)},[]);
 
     function show(){
+        console.log('dsfgsdf');
 
         // console.log(userData)
         // axios.get('http://localhost:8000/api/test').then((red) => {

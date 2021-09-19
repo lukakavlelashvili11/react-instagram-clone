@@ -6,21 +6,21 @@ import Description from './Description'
 import Comments from './Comments'
 import AddComment from './AddComment'
 
-const Post = ({ num }) => {
+const Post = ({ data }) => {
     return(
         <div className="post">
             <div className="post__header">
                 <div className="user">
                     <UserPic size={35}/>
-                    <div className="user__name">lukako kavlelasvhili</div>
+                    <div className="user__name">{ data.user.name }</div>
                 </div>
             </div>
             <div className="post__content">
-                <img src={test} className="image"/>
+                <img src={ data.imageurl } className="image"/>
             </div>
             <div className="user-actions">
                 <Reacts/>
-                <Description/>
+                <Description data={ data }/>
                 <Comments/>
             </div>
             <AddComment/>

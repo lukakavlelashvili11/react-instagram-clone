@@ -31,7 +31,14 @@ class LoginController extends Controller
             'password' => 'luka12345',
         ];
         if(Auth::attempt($credentials)){
-            return 'successs';
+            $user = User::where('email', $request['email'])->firstOrFail();
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                    'access_token' => $token,
+                    'token_type' => 'Bearer',
+            ]);
         }else{
             throw new AuthenticationException();
         }

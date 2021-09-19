@@ -6,6 +6,7 @@ import BlackExplore from '../../../assets/img/headerIcons/Explore/black-explore.
 import WhiteExplore from '../../../assets/img/headerIcons/Explore/white-explore.png'
 import UserPic from '../../UserPic/UserPic'
 import Heart from '../Heart/Heart'
+import AddPost from '../AddPost/AddPost'
 import './headerNav.scss'
 import { useLocation,Link } from 'react-router-dom'
 
@@ -14,6 +15,7 @@ const HeaderNav = () => {
 
     return(
         <div className="header-nav">
+            <AddPost/>
             <Link to="/">
                 {location.pathname === '/' ? <img className="icon" src={ BlackHome } alt="home"/> : <img className="icon" src={ WhiteHome } alt="home" />}
             </Link>

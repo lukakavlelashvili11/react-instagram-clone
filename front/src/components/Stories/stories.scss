@@ -1,0 +1,27 @@
+.stories{
+    width: 600px;
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.user-profile{
+    // text-align: center;
+    border:1px solid black;
+    // display: flex;
+    // justify-content: center;
+    // flex-direction: column;
+
+    // :not(:first-child){
+    //     margin-left: 30px;
+    // }
+    width: 100px;
+    .user-name{
+        border:1px solid black;
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+        span{
+            white-space: nowrap
+        }
+    }
+}

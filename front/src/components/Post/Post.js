@@ -4,6 +4,7 @@ import Reacts from './Reacts'
 import Description from './Description'
 import Comments from './Comments'
 import AddComment from './AddComment'
+import Options from './Options'
 
 const Post = ({ data }) => {
     return(
@@ -13,6 +14,7 @@ const Post = ({ data }) => {
                     <UserPic size={35}/>
                     <div className="user__name">{ data.user.name }</div>
                 </div>
+                <Options data={data}/>
             </div>
             <div className="post__content">
                 <img src={ data.imageurl } className="image"/>

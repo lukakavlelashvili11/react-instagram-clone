@@ -1,7 +1,8 @@
 import Header from './components/Includes/Header/Header'
-import Main from './pages/Main/Main'
-import Inbox from './pages/Inbox/Inbox'
+import Main from './pages/Main'
+import Inbox from './pages/Inbox'
 import Explore from './pages/Explore'
+import User from './pages/User'
 import LogIn from './components/Auth/LogIn'
 import Default from './components/layouts/Default'
 import Auth from './components/layouts/Auth'
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/explore">
             <Explore/>
+          </Route>
+          <Route path="/user">
+            <User/>
           </Route>
         </Switch>
       </Default>

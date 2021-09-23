@@ -55,12 +55,12 @@ const AddPost = () => {
                         <h3>Add post</h3>
                         <button className="button" onClick={ browseFiles }>Choose image</button>
                     </div>
-                    <div className="add-post__body">
+                    {/* <div className="add-post__body"> */}
                         {choosenImgURL && <img src={choosenImgURL} width="100"/>}
                         <input type="file" hidden ref={fileInput} onChange={showChoosenPhoto}/>
                         <textarea className="text-input" placeholder="Write something..." ref={postText}></textarea>
-                        <button onClick={post} className="button">Post</button>
-                    </div>
+                        <button onClick={post} className="button post-button">Post</button>
+                    {/* </div> */}
                 </div>
             </Modal>
         )

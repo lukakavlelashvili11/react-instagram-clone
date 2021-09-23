@@ -3,21 +3,23 @@
     cursor: pointer;
 }
 .add-post{
-    display: flex;
+    // display: flex;
     // justify-content: center;
-    flex-direction: column;
-    *{
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    // flex-direction: column;
+    // *{
+    //     margin-top: 20px;
+    //     margin-left: auto;
+    //     margin-right: auto;
+    // }
     .button{
         width: 140px;
         height: 35px;
         background: none;
-        border: 1px solid rgb(212, 212, 212);
+        border: 1px solid #f09433;
         border-radius: 10px;
         cursor: pointer;
+        // background: #f09433; 
+    // background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
     }
     .text-input{
         width: 80%;
@@ -26,5 +28,25 @@
         border-radius: 10px;
         padding: 20px;
         outline: none;
+        margin-left: auto;
+        margin-right: auto;
+        // margin-top: 20px;
+
+    }
+    &__header{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__body{
+        width: 100%;
+        // display: flex;
+        // justify-content: center;
+        // flex-direction: column;
+        *{
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }

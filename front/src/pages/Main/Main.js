@@ -13,7 +13,6 @@ const Main = () => {
 
     useEffect(async () => {
         const res = await api.get('/api/post');
-        console.log(res.data)
         setPosts(res.data);
     },[updatedState])
 

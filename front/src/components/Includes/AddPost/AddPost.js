@@ -4,17 +4,9 @@ import './addPost.scss'
 import { useState,useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../../store/actions/updatePosts'
-import axios from 'axios'
+import api from '../../../utils/api'
 
 const AddPost = () => {
-
-    const apiClient = axios.create({
-
-        baseURL: 'http://localhost:8000',
-    
-        withCredentials: true,
-    
-    });
 
     const [modal,setModal] = useState(false);
     const [choosenImgURL,setImgURL] = useState('');
@@ -44,7 +36,7 @@ const AddPost = () => {
         let data = new FormData();
         data.append('image',image);
         data.append('text',postText.current.value);
-        apiClient.post('/api/post/save',data,{
+        api.post('/api/post/save',data,{
             headers:{
                 'content-type': 'multipart/form-data'
             }
@@ -59,11 +51,16 @@ const AddPost = () => {
         return(
             <Modal onClick={() => setModal(false)}>
                 <div className="add-post">
-                    <button className="button" onClick={ browseFiles }>Choose image</button>
-                    {choosenImgURL && <img src={choosenImgURL} width="100"/>}
-                    <input type="file" hidden ref={fileInput} onChange={showChoosenPhoto}/>
-                    <textarea className="text-input" placeholder="Write something..." ref={postText}></textarea>
-                    <button onClick={post} className="button">Post</button>
+                    <div className="add-post__header">
+                        <h3>Add post</h3>
+                        <button className="button" onClick={ browseFiles }>Choose image</button>
+                    </div>
+                    <div className="add-post__body">
+                        {choosenImgURL && <img src={choosenImgURL} width="100"/>}
+                        <input type="file" hidden ref={fileInput} onChange={showChoosenPhoto}/>
+                        <textarea className="text-input" placeholder="Write something..." ref={postText}></textarea>
+                        <button onClick={post} className="button">Post</button>
+                    </div>
                 </div>
             </Modal>
         )

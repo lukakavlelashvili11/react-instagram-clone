@@ -28,8 +28,10 @@ Route::get('/test',function(){
 
 Route::post('/login',[LoginController::class,'logIn']);
 
+//post
 Route::post('/post/save',[PostController::class,'store']);
 Route::get('/post',[PostController::class,'get']);
+Route::post('/post/delete',[PostController::class,'delete']);
 
 Route::post('/comment/save',[CommentController::class,'store']);
 Route::post('/like/save',[LikeController::class,'store']);

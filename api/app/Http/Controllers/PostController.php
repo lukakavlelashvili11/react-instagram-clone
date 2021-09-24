@@ -30,6 +30,10 @@ class PostController extends Controller
         }
     }
 
+    public function delete(Request $request){
+        $this->postRepository->delete($request->only('user_id','id'));
+    }
+
     public function storeImage($request){
         $file_name = time().'_'.$request->image->getClientOriginalName();
         $request->file('image')->storeAs('uploads/2',$file_name,'public');

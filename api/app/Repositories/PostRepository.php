@@ -28,4 +28,8 @@ class PostRepository{
     public function store(array $postData): void{
         $this->post->create($postData);
     }
+
+    public function delete(array $postData){
+        $this->post->where($postData)->delete();
+    }
 }

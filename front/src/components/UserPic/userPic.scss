@@ -1,15 +1,19 @@
 .user-picture{
     border-radius: 50%;
     overflow: hidden;
-    cursor: pointer;
     img{
         height: 100%;
         width: 100%;
         object-fit: cover;
     }
 }
-.insta-circle{
+.circle{
     border-radius: 50%;
+    cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+}
+.insta-circle{
     padding: 2px;
     background: #f09433; 
     background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 

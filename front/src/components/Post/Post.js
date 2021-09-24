@@ -11,7 +11,7 @@ const Post = ({ data }) => {
         <div className="post">
             <div className="post__header">
                 <div className="user">
-                    <UserPic size={35}/>
+                    <UserPic size={35} imageUrl={data.user.profile_pic}/>
                     <div className="user__name">{ data.user.name }</div>
                 </div>
                 <Options data={data}/>

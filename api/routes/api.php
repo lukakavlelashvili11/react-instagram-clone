@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogOutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
@@ -37,6 +38,8 @@ Route::get('/test',function(){
 Route::post('/user/store/picture',[UserController::class,'storePicture']);
 
 Route::post('/login',[LoginController::class,'logIn']);
+Route::post('/logout',[LogOutController::class,'logOut']);
+
 
 //post
 Route::post('/post/save',[PostController::class,'store']);

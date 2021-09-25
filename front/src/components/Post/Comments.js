@@ -1,11 +1,17 @@
 import CommentsItem from "./CommentsItem"
 import { useDispatch } from "react-redux"
 import { ShowViewAll } from "../../store/actions/ShowViewAll"
+import { useEffect } from "react"
 // import ViewAll from "./ViewAll/ViewAll";
 
 const Comments = ({ data }) => {
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        console.log('sdfgsdfg');
+        dispatch(ShowViewAll(data))
+    },[data]);
 
     const CommentsCount = () => <span className="comments-quantity" onClick={() => dispatch(ShowViewAll(data))}>view all { data.comments.length } comments</span>;
     return(

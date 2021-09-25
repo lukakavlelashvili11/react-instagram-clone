@@ -1,18 +1,14 @@
 import InstagramLogo from '../../assets/img/insta-logo.png'
 import FacebookLogo from '../../assets/img/facebook-logo.png'
+import { useDispatch } from 'react-redux'
+import { logIn } from '../../store/actions/logIn'
 import './auth.scss'
 // import { useState,useEffect } from 'react'
 import axios from 'axios'
 
 const LogIn = () => {
 
-    const apiClient = axios.create({
-
-        baseURL: 'http://localhost:8000',
-    
-        withCredentials: true,
-    
-    });
+    const dispatch = useDispatch();
 
     // useEffect(() => {
         
@@ -21,25 +17,7 @@ const LogIn = () => {
         // useEffect(()=>{console.log(cookie)},[]);
 
     function show(){
-        console.log('dsfgsdf');
-
-        // console.log(userData)
-        // axios.get('http://localhost:8000/api/test').then((red) => {
-        //     console.log(red);
-        // })
-        apiClient.get("/sanctum/csrf-cookie").then(() => {
-            apiClient.post("/api/login", {
-                email: 'luka1@gmail.com',
-                password: 'luka12345'
-              })
-              .then((response) => {
-                apiClient.get('/api/user')
-                .then(res => {
-                    console.log(res);
-                })
-              });
-            // console.log(response);
-          });
+        dispatch(logIn());
     }
 
     return (

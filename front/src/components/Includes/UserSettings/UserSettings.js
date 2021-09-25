@@ -1,11 +1,16 @@
 import UserPic from '../../UserPic/UserPic'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import api from '../../../utils/api'
 import './userSetting.scss'
 
 const UserSettings = () => {
 
     const [options,setOptions] = useState(false);
+
+    function logOut(){
+        api.post('/api/logout');
+    }
 
     const Options = () => {
         return(
@@ -14,6 +19,7 @@ const UserSettings = () => {
                     <li className="options-list-item">
                         <Link to='/user'>Profile</Link>
                     </li>
+                    <li onClick={logOut}>Log out</li>
                 </ul>
             </div>
         )

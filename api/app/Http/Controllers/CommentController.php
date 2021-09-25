@@ -13,7 +13,7 @@ class CommentController extends Controller
         $this->commentRepository = $commentRepository;
     }
 
-    public function store(Request $request){
+    public function store(Request $request): void{
         $this->commentRepository->store([
             'text' => $request->text,
             'post_id' => $request->post_id,

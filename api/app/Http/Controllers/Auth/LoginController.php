@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function logIn(Request $request){
+        if(!Auth::attempt($request->only('email','password'))){
+            throw new AuthenticationException();
+        }
         // if(Auth::check()){
         //     return 'registered';
         // }
@@ -26,22 +29,22 @@ class LoginController extends Controller
         //     'email' => "luka3@gmail.com",
         //     'password' => 'luka12345'
         // ]);
-        $credentials = [
-            'email' => 'luka3@gmail.com',
-            'password' => 'luka12345',
-        ];
-        if(Auth::attempt($credentials)){
-            $user = User::where('email', $request['email'])->firstOrFail();
+        // $credentials = [
+        //     'email' => 'luka3@gmail.com',
+        //     'password' => 'luka12345',
+        // ];
+        // if(Auth::attempt($credentials)){
+        //     $user = User::where('email', $request['email'])->firstOrFail();
 
-            $token = $user->createToken('auth_token')->plainTextToken;
+        //     $token = $user->createToken('auth_token')->plainTextToken;
 
-            return response()->json([
-                    'access_token' => $token,
-                    'token_type' => 'Bearer',
-            ]);
-        }else{
-            throw new AuthenticationException();
-        }
+        //     return response()->json([
+        //             'access_token' => $token,
+        //             'token_type' => 'Bearer',
+        //     ]);
+        // }else{
+        //     throw new AuthenticationException();
+        // }
         // return json_encode($request->email);
         // return response()->json($request->email);
         // return $request->email;

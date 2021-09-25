@@ -29,11 +29,14 @@ const LogIn = () => {
         // })
         apiClient.get("/sanctum/csrf-cookie").then(() => {
             apiClient.post("/api/login", {
-                email: 'luka@gmail.com',
+                email: 'luka1@gmail.com',
                 password: 'luka12345'
               })
               .then((response) => {
-                console.log(response.data);
+                apiClient.get('/api/user')
+                .then(res => {
+                    console.log(res);
+                })
               });
             // console.log(response);
           });

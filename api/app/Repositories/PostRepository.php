@@ -29,7 +29,7 @@ class PostRepository{
         $this->post->create($postData);
     }
 
-    public function delete(array $postData){
+    public function delete(array $postData): void{
         $this->post->where($postData)->delete();
     }
 }

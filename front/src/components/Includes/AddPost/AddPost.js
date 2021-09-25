@@ -49,7 +49,7 @@ const AddPost = () => {
    
     const AddPostModal = () => {
         return(
-            <Modal onClick={() => setModal(false)}>
+            <Modal onClick={() => setModal(false)} sm>
                 <div className="add-post">
                     <div className="add-post__header">
                         <h3>Add post</h3>

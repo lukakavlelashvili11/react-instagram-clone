@@ -1,19 +1,17 @@
 import './post.scss'
-import UserPic from '../UserPic/UserPic'
 import Reacts from './Reacts'
 import Description from './Description'
 import Comments from './Comments'
 import AddComment from './AddComment'
 import Options from './Options'
+import UserPicWithName from '../UserPic/UserPicWithName'
+import Moment from 'react-moment'
 
 const Post = ({ data }) => {
     return(
         <div className="post">
             <div className="post__header">
-                <div className="user">
-                    <UserPic size={35} imageUrl={data.user.profile_pic}/>
-                    <div className="user__name">{ data.user.name }</div>
-                </div>
+                <UserPicWithName size={30} data={data}/>
                 <Options data={data}/>
             </div>
             <div className="post__content">
@@ -23,8 +21,11 @@ const Post = ({ data }) => {
                 <Reacts data={data}/>
                 <Description data={ data }/>
                 <Comments data={data}/>
+                <div className="date">
+                    <Moment element="span" fromNow>{data.created_at}</Moment>
+                </div>
             </div>
-            <AddComment data={data}/>
+                <AddComment data={data}/>
         </div>
     )
 }

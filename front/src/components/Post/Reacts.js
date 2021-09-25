@@ -1,11 +1,12 @@
 import WhiteHeart from '../../assets/img/headerIcons/Heart/white-heart.png'
-import RedHeart from '../../assets/img/red-heart.png'
+import RedHeart from '../../assets/img/heart(1).png'
 import CommentIcon from '../../assets/img/comment.png'
 import MessageIcon from '../../assets/img/message.png'
 import BookmarkIcon from '../../assets/img/bookmark.png'
 import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../store/actions/updatePosts'
 import api from '../../utils/api'
+import './post.scss'
 
 const Reacts = ({ data }) => {
 
@@ -36,7 +37,7 @@ const Reacts = ({ data }) => {
     }
 
     const UnLiked = () => <img src={WhiteHeart} alt="heart" onClick={likePost}/>;
-    const Liked = () => <img src={RedHeart} alt="heart" onClick={unLikePost}/>;
+    const Liked = () => <img style={{width: '25px'}} width="4" src={RedHeart} alt="heart" onClick={unLikePost}/>;
 
     return(
         <div className="reacts">

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import api from '../../utils/api'
 import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../store/actions/updatePosts'
+import './post.scss'
 
 const Options = ({ data }) => {
 

@@ -7,7 +7,6 @@ import { updatePosts } from '../../store/actions/updatePosts'
 const AddComment = ({ data }) => {
 
     const comment = useRef();
-
     const dispatch = useDispatch();
     
     function writeComment(){

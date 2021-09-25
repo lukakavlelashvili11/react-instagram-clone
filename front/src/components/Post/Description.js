@@ -1,3 +1,5 @@
+import './post.scss'
+
 const Description = ({ data }) => {
     return(
         <div className="description">

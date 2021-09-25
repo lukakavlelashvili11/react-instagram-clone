@@ -21,3 +21,11 @@
 .border-around-pic{
     border:2px solid white;
 }
+.user{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &__name{
+        margin-left: 12px;
+    }
+}

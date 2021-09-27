@@ -15,7 +15,7 @@ import AddComment from '../AddComment'
 const ViewAll = () => {
 
     const [modal,setModal] = useState(false);
-    const [userTextsHeight,setUserTextsHeight] = useState(200)
+    const [userTextsHeight,setUserTextsHeight] = useState(160)
     const state = useSelector(state => state.shown);
     const dispatch = useDispatch();
 
@@ -33,17 +33,19 @@ const ViewAll = () => {
     function getModalHeight(el){
         if(el){
             let height = el.offsetHeight;
-            let userTexts = height - 240;
-            setUserTextsHeight(userTexts);
+            if(height > 250){
+                let userTexts = height - 240;
+                setUserTextsHeight(userTexts);
+            }
         }
     }
 
     const ViewAllModal = () => {
         return(
             <Modal onClick={hideModal} lg>
-                <div className="view-all">
+                <div className="view-all" ref={el => {getModalHeight(el)}}>
                     <div className="image-side">
-                        <img src={state.imageurl} alt="image" ref={el => {getModalHeight(el)}}/>
+                        <img src={state.imageurl} alt="image" />
                     </div>
                     <div className="comments-side">
                         <div className="user-details">

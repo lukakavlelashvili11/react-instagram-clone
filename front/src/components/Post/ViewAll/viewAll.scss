@@ -2,8 +2,12 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    min-height: 400px;
     .image-side{
         width: 60%;
+        background: black;
+        display: flex;
+        align-items: center;
         img{
             width: 100%;
         }

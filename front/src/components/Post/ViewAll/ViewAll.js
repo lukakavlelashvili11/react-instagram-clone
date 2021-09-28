@@ -15,15 +15,18 @@ import AddComment from '../AddComment'
 const ViewAll = () => {
 
     const [modal,setModal] = useState(false);
+    // const [modalDataUpdate,setModalDataUpdate] = useState(false);
     const [userTextsHeight,setUserTextsHeight] = useState(160)
     const state = useSelector(state => state.shown);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!!state){
+        if(!!state && state.modalAction){
             setModal(true);
         }
     },[state])
+
+
 
     function hideModal(){
         dispatch(ShowViewAll(0));

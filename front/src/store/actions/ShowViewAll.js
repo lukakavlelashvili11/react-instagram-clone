@@ -1,6 +1,6 @@
-export const ShowViewAll = (data) => {
+export const ShowViewAll = (data,modalAction) => {
     return {
         type: 'shown',
-        payload: data
+        payload: {...data,modalAction},
     }
 }

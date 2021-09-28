@@ -10,10 +10,10 @@ const Comments = ({ data }) => {
 
     useEffect(() => {
         console.log('sdfgsdfg');
-        dispatch(ShowViewAll(data))
+        dispatch(ShowViewAll(data,false))
     },[data]);
 
-    const CommentsCount = () => <span className="comments-quantity" onClick={() => dispatch(ShowViewAll(data))}>view all { data.comments.length } comments</span>;
+    const CommentsCount = () => <span className="comments-quantity" onClick={() => dispatch(ShowViewAll(data,true))}>view all { data.comments.length } comments</span>;
     return(
         <div className="comments">
             {data.comments.length >= 3 && <CommentsCount/>}

@@ -63,7 +63,7 @@ const AddPost = () => {
                         <input type="file" hidden ref={fileInput} onChange={showChoosenPhoto}/>
                         <div className="write-post">
                             <UserPic size={30}/>
-                            <textarea className={`text-input ${animation ? 'increase-height' : 'reduce-height'}`} placeholder="Write something..." onClick={(e) => {e.stopPropagation();setAnimaton(true);}} ref={postText}></textarea>
+                            <textarea className={`text-input ${animation ? 'increase-height' : 'reduce-height'}`} placeholder="Write something..." onClick={(e) => {e.stopPropagation();setAnimaton(true);e.target.click();}} ref={postText}></textarea>
                         </div>
                         <button onClick={post} className="button post-button">Post</button>
                     {/* </div> */}

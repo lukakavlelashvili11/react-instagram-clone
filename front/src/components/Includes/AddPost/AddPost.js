@@ -1,5 +1,6 @@
 import AddPostIcon from '../../../assets/img/headerIcons/add-post.png'
 import Modal from '../../Modal/Modal'
+import UserPic from '../../UserPic/UserPic'
 import './addPost.scss'
 import { useState,useRef } from 'react'
 import { useDispatch } from 'react-redux'
@@ -14,6 +15,8 @@ const AddPost = () => {
     const postText = useRef();
     const fileInput = useRef();
     const dispatch = useDispatch();
+
+    const [animation,setAnimaton] = useState(false);
 
     function browseFiles(){
         fileInput.current.click();
@@ -50,7 +53,7 @@ const AddPost = () => {
     const AddPostModal = () => {
         return(
             <Modal onClick={() => setModal(false)} sm>
-                <div className="add-post">
+                <div className="add-post" onClick={() => setAnimaton(false)}>
                     <div className="add-post__header">
                         <h3>Add post</h3>
                         <button className="button" onClick={ browseFiles }>Choose image</button>
@@ -58,7 +61,10 @@ const AddPost = () => {
                     {/* <div className="add-post__body"> */}
                         {choosenImgURL && <img src={choosenImgURL} width="100"/>}
                         <input type="file" hidden ref={fileInput} onChange={showChoosenPhoto}/>
-                        <textarea className="text-input" placeholder="Write something..." ref={postText}></textarea>
+                        <div className="write-post">
+                            <UserPic size={30}/>
+                            <textarea className={`text-input ${animation ? 'increase-height' : 'reduce-height'}`} placeholder="Write something..." onClick={(e) => {e.stopPropagation();setAnimaton(true);}} ref={postText}></textarea>
+                        </div>
                         <button onClick={post} className="button post-button">Post</button>
                     {/* </div> */}
                 </div>

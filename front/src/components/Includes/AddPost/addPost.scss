@@ -11,6 +11,7 @@
     //     margin-left: auto;
     //     margin-right: auto;
     // }
+    padding: 15px;
     .button{
         width: 140px;
         height: 35px;
@@ -26,11 +27,19 @@
     }
     .text-input{
         width: 90%;
-        height: 150px;
+        height: 10px;
         border: 1px solid rgb(212, 212, 212);
         border-radius: 10px;
         padding: 20px;
         outline: none;
+        margin-left: 5px;
+        overflow:hidden;
+        resize:none;
+    }
+    .write-post{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
         margin-top: 30px;
     }
     &__header{
@@ -49,4 +58,23 @@
             margin-right: auto;
         }
     }
+}
+.increase-height{
+    animation-name: increase;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+.reduce-height{
+    animation-name: reduce;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes increase{
+    from   {height: 10px;}
+    to {height: 50px;}
+}
+@keyframes reduce{
+    from{height: 70px;}
+    to{height: 10px;}
 }

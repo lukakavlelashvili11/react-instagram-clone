@@ -8,11 +8,28 @@ import Default from './components/layouts/Default'
 import Auth from './components/layouts/Auth'
 import ViewAll from './components/Post/ViewAll/ViewAll'
 import { Route,Switch } from 'react-router-dom'
-import { useSelector } from 'react-redux' 
+import Loader from './components/Loader/Loader'
+
+import { useEffect,useState } from 'react'
+import { useUser } from './utils/useUser'
 
 function App() {
 
-  const state = useSelector(state => state.loggedIn)
+  // const state = useSelector(state => state.loggedIn)
+  // const [loggedIn,setLoggedIn] = useState(false); 
+  
+
+  const data = useUser();
+  console.log(data);
+
+  
+
+  // useEffect(() => {
+  //   if(state){
+  //     setLoggedIn(true);
+  //   }
+  // },[state])
+
 
   // const [state,setState] = useState(false);
   // const state = false;
@@ -22,7 +39,8 @@ function App() {
   
   return (
     <div>
-      {state ?
+      <Loader/>
+      {data?.isLoggedIn ?
       <Default>
         <Header/>
         <ViewAll/>

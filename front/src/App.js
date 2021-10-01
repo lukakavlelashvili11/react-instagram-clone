@@ -12,6 +12,7 @@ import Loader from './components/Loader/Loader'
 
 import { useEffect,useState } from 'react'
 import { useUser } from './utils/useUser'
+import Register from './components/Auth/Register'
 
 function App() {
 
@@ -20,7 +21,6 @@ function App() {
   
 
   const data = useUser();
-  console.log(data);
 
   
 
@@ -61,7 +61,15 @@ function App() {
       </Default>
       :
       <Auth>
-        <LogIn/>
+        <Route path="/" exact> 
+          <LogIn/>
+        </Route>
+        <Route path="/login"> 
+          <LogIn/>
+        </Route>
+        <Route path="/register"> 
+          <Register/>
+        </Route>
       </Auth>}
     </div>
   );

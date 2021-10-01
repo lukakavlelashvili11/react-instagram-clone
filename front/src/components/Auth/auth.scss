@@ -39,6 +39,9 @@
                 font-size: 15px;
                 border-radius: 3px;
                 cursor: pointer;
+                &:hover{
+                    background: rgb(0, 124, 207);
+                }
             }
         }
         .or{
@@ -93,9 +96,12 @@
         .create-account__text{
             font-size: 14px;
             &--blue{
-                color: rgb(0,149,246);
-                font-weight: bold;
-                margin-left: 3px;
+                a{
+                    color: rgb(0,149,246);
+                    font-weight: bold;
+                    margin-left: 3px;
+                    text-decoration: none;
+                }
             }
         }
     }

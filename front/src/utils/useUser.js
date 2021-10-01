@@ -20,7 +20,6 @@ export const useUser = () => {
             }catch(e){
                 setIsLoggedIn(false);
             }finally{
-                console.log('finaleleleee');
                 dispatch(setLoader(false));
             }
         }
@@ -32,15 +31,9 @@ export const useUser = () => {
             }
         },[state])
 
-    if(!isLoggedIn){
-        return {
-            isLoggedIn
-        };
-    }
-    if(userData !== null){
         return {
             isLoggedIn,
-            ...userData
+            name: userData?.fullname,
+            email: userData?.email
         };
-    }
 }

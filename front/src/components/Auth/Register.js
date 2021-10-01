@@ -3,14 +3,28 @@ import FacebookLogo from '../../assets/img/facebook-logo.png'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../store/actions/logIn'
 import { Link } from 'react-router-dom'
+import { useRef } from 'react'
+import api from '../../utils/api'
 import './auth.scss'
 
-const LogIn = () => {
+const Register = () => {
 
     const dispatch = useDispatch();
 
-    function show(){
-        dispatch(logIn());
+    const email = useRef();
+    const fullname = useRef();
+    const username = useRef();
+    const password = useRef();
+
+    function register(e){
+        e.preventDefault();
+        console.log('adasdasdfasdf')
+        api.post('/api/register',{
+            email: email.current.value,
+            fullname: fullname.current.value,
+            username: username.current.value,
+            password: password.current.value
+        });
     }
 
     return (
@@ -19,11 +33,15 @@ const LogIn = () => {
                 <img className="logo" src={InstagramLogo} alt="instagram"/>
                 <div className="form">
                     <div className="inputs">
-                        <input className="input" type="text" placeholder="Email"/>
-                        <input className="input" type="password" placeholder="Password"/>
+                        <form onSubmit={register}>
+                            <input ref={email} className="input" type="text" placeholder="Email"/>
+                            <input ref={fullname} className="input" type="text" placeholder="Full Name"/>
+                            <input ref={username} className="input" type="text" placeholder="Username"/>
+                            <input ref={password} className="input" type="password" placeholder="Password"/>
+                        </form>
                     </div>
-                    <button className="button" onClick={show}>
-                        <span>Log In</span>
+                    <button type="submit" className="button" onClick={register}>
+                        <span>Sign up</span>
                     </button>
                 </div>
                 <div className="or">
@@ -40,13 +58,13 @@ const LogIn = () => {
                 </div>
             </div>
             <div className="create-account">
-                <span className="create-account__text">Don't have an account?</span>
+                <span className="create-account__text">Do you have an account?</span>
                 <span className="create-account__text create-account__text--blue">
-                    <Link to="/register">Sign up</Link>
+                    <Link to="/login">Log in</Link>
                 </span>
             </div>
         </div>
     )
 }
 
-export default LogIn
+export default Register

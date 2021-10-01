@@ -10,11 +10,9 @@ const Comments = ({ data }) => {
     const [dataId,setDataId] = useState(data.id);
 
     useEffect(() => {
-        console.log(dataId);
         if(data.id == dataId){
             dispatch(ShowViewAll(data,false));
             setDataId(data.id);
-            console.log(dataId);
         }
     },[data]);
 

@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux'
 const Loader = () => {
 
     const state = useSelector(state => state.load);
-    console.log(state);
 
     const LoaderComponent = () => {
         return(

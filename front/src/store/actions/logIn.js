@@ -9,7 +9,6 @@ export const logIn = () => async (dispatch) => {
             .then((response) => {
             api.get('/api/user')
             .then(res => {
-                console.log(res);
                 dispatch({
                     type: 'loggedIn',
                     payload: res.data

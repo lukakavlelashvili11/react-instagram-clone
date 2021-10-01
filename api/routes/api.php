@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogOutController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
@@ -33,6 +34,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/test',function(){
     return 'worrkss';
 });
+
+Route::post('/register',[RegisterController::class,'store']);
 
 //User
 Route::post('/user/store/picture',[UserController::class,'storePicture']);

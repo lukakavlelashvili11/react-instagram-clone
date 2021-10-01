@@ -9,38 +9,17 @@ import Auth from './components/layouts/Auth'
 import ViewAll from './components/Post/ViewAll/ViewAll'
 import { Route,Switch } from 'react-router-dom'
 import Loader from './components/Loader/Loader'
-
-import { useEffect,useState } from 'react'
 import { useUser } from './utils/useUser'
 import Register from './components/Auth/Register'
 
 function App() {
 
-  // const state = useSelector(state => state.loggedIn)
-  // const [loggedIn,setLoggedIn] = useState(false); 
-  
-
-  const data = useUser();
-
-  
-
-  // useEffect(() => {
-  //   if(state){
-  //     setLoggedIn(true);
-  //   }
-  // },[state])
-
-
-  // const [state,setState] = useState(false);
-  // const state = false;
-  // function show(){
-  //   setState(!state);
-  // }
+  const { isLoggedIn } = useUser();
   
   return (
     <div>
       <Loader/>
-      {data?.isLoggedIn ?
+      {isLoggedIn ?
       <Default>
         <Header/>
         <ViewAll/>

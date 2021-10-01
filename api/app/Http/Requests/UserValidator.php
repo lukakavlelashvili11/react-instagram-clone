@@ -26,7 +26,7 @@ class UserValidator extends FormRequest
         return [
             "username" => "unique:users",
             "fullname" => "required",
-            "email" => "required|email",
+            "email" => "required|email|unique:users",
             "password" => "required|min:8"
         ];
     }

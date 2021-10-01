@@ -34,6 +34,7 @@ export const useUser = () => {
         return {
             isLoggedIn,
             name: userData?.fullname,
-            email: userData?.email
+            email: userData?.email,
+            userPic: userData?.profile_pic
         };
 }

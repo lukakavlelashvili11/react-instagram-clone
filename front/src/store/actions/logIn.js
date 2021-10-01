@@ -1,12 +1,11 @@
 import api from "../../utils/api"
 
-export const logIn = () => async (dispatch) => {
+export const logIn = ( data ) => async ( dispatch ) => {
     return  api.get("/sanctum/csrf-cookie").then(() => {
         api.post("/api/login", {
-            email: 'luka1@gmail.com',
-            password: 'luka12345'
+                ...data
             })
-            .then((response) => {
+            .then(() => {
             api.get('/api/user')
             .then(res => {
                 dispatch({

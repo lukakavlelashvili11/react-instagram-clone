@@ -3,14 +3,23 @@ import FacebookLogo from '../../assets/img/facebook-logo.png'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../store/actions/logIn'
 import { Link } from 'react-router-dom'
+import { useRef } from 'react'
+import { useHistory } from "react-router-dom"
 import './auth.scss'
 
 const LogIn = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+    const email = useRef();
+    const password = useRef();
 
     function show(){
-        dispatch(logIn());
+        dispatch(logIn({
+            email: email.current.value,
+            password: password.current.value
+        }));
+        history.push('/');
     }
 
     return (
@@ -19,8 +28,8 @@ const LogIn = () => {
                 <img className="logo" src={InstagramLogo} alt="instagram"/>
                 <div className="form">
                     <div className="inputs">
-                        <input className="input" type="text" placeholder="Email"/>
-                        <input className="input" type="password" placeholder="Password"/>
+                        <input ref={email} className="input" type="text" placeholder="Email"/>
+                        <input ref={password} className="input" type="password" placeholder="Password"/>
                     </div>
                     <button className="button" onClick={show}>
                         <span>Log In</span>

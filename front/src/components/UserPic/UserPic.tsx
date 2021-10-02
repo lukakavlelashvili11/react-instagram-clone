@@ -1,8 +1,16 @@
 import UserPlaceholder from '../../assets/img/user-placeholder.jpg' 
 import PropTypes from 'prop-types'
 import './userPic.scss'
+import React from 'react'
 
-const UserPic = ({ size,hasStory,onClick,imageUrl }) => {
+interface Props {
+    size: number;
+    hasStory: boolean;
+    onClick: () => void;
+    imageUrl: string;
+}
+
+const UserPic: React.FC<Props> = ({ size,hasStory,onClick,imageUrl }) => {
     return(
         <div className={`circle ${hasStory && 'insta-circle'}`} onClick={onClick}>
             <div className={`user-picture ${hasStory && 'border-around-pic'}`} style={{ height: `${size}px`,width: `${size}px` }}>
@@ -12,8 +20,8 @@ const UserPic = ({ size,hasStory,onClick,imageUrl }) => {
     )
 }
 
-UserPic.propTypes = {
-    size: PropTypes.number.isRequired,
-}
+// UserPic.propTypes = {
+//     size: PropTypes.number.isRequired,
+// }
 
 export default UserPic

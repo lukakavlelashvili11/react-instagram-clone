@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -18,5 +20,13 @@ class UserController extends Controller
         $file_name = time().'_'.$request->profile_pic->getClientOriginalName();
         $request->file('profile_pic')->storeAs('uploads/'.auth()->user()->id.'/profile',$file_name,'public');
         return asset('storage/uploads/'.auth()->user()->id.'/profile/'.$file_name);
+    }
+
+    public function search(Request $request){
+        //without repository for speed
+        return DB::table('users')->where([
+            ['username','like','%'.$request->term.'%'],
+            ['fullname','like','%'.$request->term.'%']
+        ])->get();
     }
 }

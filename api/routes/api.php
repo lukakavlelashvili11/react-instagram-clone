@@ -36,7 +36,7 @@ Route::get('/test',function(){
 });
 
 Route::post('/register',[RegisterController::class,'store']);
-
+Route::post('/search',[UserController::class,'search']);
 //User
 Route::post('/user/store/picture',[UserController::class,'storePicture']);
 

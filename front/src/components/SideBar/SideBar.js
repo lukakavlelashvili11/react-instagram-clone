@@ -4,7 +4,7 @@ import './sideBar.scss'
 
 const SideBar = () => {
 
-    const { name,userPic } = useUser();
+    const { username,userPic } = useUser();
     console.log(userPic)
     
     return(
@@ -12,7 +12,7 @@ const SideBar = () => {
             <div className="sidebar__top">
                 <div className="user">
                     <UserPic size={55} imageUrl={userPic}/>
-                    <div className="user__name">{ name }</div>
+                    <div className="user__name">{ username }</div>
                 </div>
                 <a href="#" className="switch">Switch</a>
             </div>

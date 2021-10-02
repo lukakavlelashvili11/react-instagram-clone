@@ -33,7 +33,8 @@ export const useUser = () => {
 
         return {
             isLoggedIn,
-            name: userData?.fullname,
+            fullname: userData?.fullname,
+            username: userData?.username,
             email: userData?.email,
             userPic: userData?.profile_pic
         };

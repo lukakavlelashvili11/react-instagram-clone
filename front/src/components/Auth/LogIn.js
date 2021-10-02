@@ -1,25 +1,53 @@
 import InstagramLogo from '../../assets/img/insta-logo.png'
 import FacebookLogo from '../../assets/img/facebook-logo.png'
+import InputError from './InputError'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../store/actions/logIn'
 import { Link } from 'react-router-dom'
-import { useRef } from 'react'
+import { useRef,useState,useEffect } from 'react'
 import { useHistory } from "react-router-dom"
+import { useError } from '../../utils/useError'
+import api from '../../utils/api'
+import AuthLoader from './AuthLoader'
 import './auth.scss'
 
 const LogIn = () => {
 
+    const [loader,setLoader] = useState(false);
+    const [error,setError] = useState(null);
+    const {emailErr,passwordErr,userErr} = useError(error);
+    const [success,setSuccess] = useState(false);
     const dispatch = useDispatch();
     const history = useHistory();
     const email = useRef();
     const password = useRef();
 
-    function show(){
-        dispatch(logIn({
-            email: email.current.value,
-            password: password.current.value
-        }));
-        history.push('/');
+    useEffect(() => {
+        if(success)
+        dispatch(logIn());
+    },[success])
+
+    function logIn(){
+        api.get("/sanctum/csrf-cookie").then(async () => {
+            try{
+                setLoader(true);
+                await api.post("/api/login", {
+                    email: email.current.value,
+                    password: password.current.value 
+                });
+                history.push('/');
+                console.log('sdfgsdfgsdfgsdfgfgfsdgsdfgsdfgsdfg');
+                setSuccess(true);
+            }catch(e){
+                setError(e);
+            }finally{
+                setLoader(false);
+            }
+        }); 
+        // dispatch(logIn({
+        //     email: email.current.value,
+        //     password: password.current.value
+        // }));
     }
 
     return (
@@ -27,14 +55,22 @@ const LogIn = () => {
             <div className="auth__inner">
                 <img className="logo" src={InstagramLogo} alt="instagram"/>
                 <div className="form">
-                    <div className="inputs">
-                        <input ref={email} className="input" type="text" placeholder="Email"/>
-                        <input ref={password} className="input" type="password" placeholder="Password"/>
-                    </div>
-                    <button className="button" onClick={show}>
-                        <span>Log In</span>
-                    </button>
+                    <form onSubmit={(e) => {e.preventDefault(); logIn()}}>
+                    <InputError errors={userErr}/>
+                        <div className="inputs">
+                            <InputError errors={emailErr}/>
+                            <input ref={email} className="input" type="text" placeholder="Email"/>
+                            <InputError errors={passwordErr}/>
+                            <input ref={password} className="input" type="password" placeholder="Password"/>
+                        </div>
+                        <button type="submit" className="button" onClick={logIn}>
+                            <span>Log In</span>
+                        </button>
+                    </form>
                 </div>
+
+                { loader && <AuthLoader/> }
+
                 <div className="or">
                     <div className="line"></div>
                     <span>OR</span>

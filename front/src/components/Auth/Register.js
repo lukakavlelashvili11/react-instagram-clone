@@ -3,28 +3,40 @@ import FacebookLogo from '../../assets/img/facebook-logo.png'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../store/actions/logIn'
 import { Link } from 'react-router-dom'
-import { useRef } from 'react'
+import { useRef,useState } from 'react'
 import api from '../../utils/api'
 import './auth.scss'
+import { useError } from '../../utils/useError'
+import InputError from './InputError'
+import AuthLoader from './AuthLoader'
 
 const Register = () => {
 
     const dispatch = useDispatch();
+    const [loader,setLoader] = useState(false);
+    const [error,setError] = useState(null);
+    const {emailErr,usernameErr,fullnameErr,passwordErr} = useError(error);
 
-    const email = useRef();
-    const fullname = useRef();
-    const username = useRef();
-    const password = useRef();
+    const emailRef = useRef();
+    const fullnameRef = useRef();
+    const usernameRef = useRef();
+    const passwordRef = useRef();
 
-    function register(e){
+    async function register(e){
         e.preventDefault();
-        console.log('adasdasdfasdf')
-        api.post('/api/register',{
-            email: email.current.value,
-            fullname: fullname.current.value,
-            username: username.current.value,
-            password: password.current.value
-        });
+        try{
+            setLoader(true);
+            await api.post('/api/register',{
+                email: emailRef.current.value,
+                fullname: fullnameRef.current.value,
+                username: usernameRef.current.value,
+                password: passwordRef.current.value
+            });
+        }catch(e){
+            setError(e);
+        }finally{
+            setLoader(false);
+        }
     }
 
     return (
@@ -32,18 +44,25 @@ const Register = () => {
             <div className="auth__inner">
                 <img className="logo" src={InstagramLogo} alt="instagram"/>
                 <div className="form">
-                    <div className="inputs">
-                        <form onSubmit={register}>
-                            <input ref={email} className="input" type="text" placeholder="Email"/>
-                            <input ref={fullname} className="input" type="text" placeholder="Full Name"/>
-                            <input ref={username} className="input" type="text" placeholder="Username"/>
-                            <input ref={password} className="input" type="password" placeholder="Password"/>
-                        </form>
-                    </div>
-                    <button type="submit" className="button" onClick={register}>
-                        <span>Sign up</span>
-                    </button>
+                    <form onSubmit={register}>
+                        <div className="inputs">
+                            <InputError errors={emailErr}/>
+                            <input ref={emailRef} className="input" type="text" placeholder="Email"/>
+                            <InputError errors={fullnameErr}/>
+                            <input ref={fullnameRef} className="input" type="text" placeholder="Full Name"/>
+                            <InputError errors={usernameErr}/>
+                            <input ref={usernameRef} className="input" type="text" placeholder="Username"/>
+                            <InputError errors={passwordErr}/>
+                            <input ref={passwordRef} className="input" type="password" placeholder="Password"/>
+                        </div>
+                        <button type="submit" className="button" onClick={register}>
+                            <span>Sign up</span>
+                        </button>
+                    </form>
                 </div>
+
+                { loader && <AuthLoader/> }
+
                 <div className="or">
                     <div className="line"></div>
                     <span>OR</span>

@@ -1,12 +1,11 @@
 import UserPlaceholder from '../../assets/img/user-placeholder.jpg' 
-import PropTypes from 'prop-types'
 import './userPic.scss'
 import React from 'react'
 
 interface Props {
     size: number;
-    hasStory: boolean;
-    onClick: () => void;
+    hasStory?: boolean;
+    onClick?: () => void;
     imageUrl: string;
 }
 
@@ -19,9 +18,5 @@ const UserPic: React.FC<Props> = ({ size,hasStory,onClick,imageUrl }) => {
         </div>
     )
 }
-
-// UserPic.propTypes = {
-//     size: PropTypes.number.isRequired,
-// }
 
 export default UserPic

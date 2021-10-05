@@ -1,7 +1,15 @@
 import UserPic from './UserPic'
 import './userPic.scss'
+import React from 'react'
+import User from '../../types/User.type'
 
-const UserPicWithName = ({ size,data }) => {
+interface Props {
+    size: number;
+    data: object;
+}
+
+
+const UserPicWithName: React.FC<Props> = ({ size,data }) => {
     return(
         <div className="user">
             <UserPic size={size} imageUrl={data.user.profile_pic}/>

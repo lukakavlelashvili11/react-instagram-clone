@@ -5,13 +5,12 @@ import './sideBar.scss'
 const SideBar = () => {
 
     const { username,userPic } = useUser();
-    console.log(userPic)
     
     return(
         <div className="sidebar">
             <div className="sidebar__top">
                 <div className="user">
-                    <UserPic size="80" imageUrl={userPic}/>
+                    <UserPic size={80} imageUrl={userPic}/>
                     <div className="user__name">{ username }</div>
                 </div>
                 <a href="#" className="switch">Switch</a>

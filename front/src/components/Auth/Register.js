@@ -9,6 +9,7 @@ import './auth.scss'
 import { useError } from '../../utils/useError'
 import InputError from './InputError'
 import AuthLoader from './AuthLoader'
+import React from 'react'
 
 const Register = () => {
 

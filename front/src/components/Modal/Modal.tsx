@@ -1,6 +1,13 @@
 import './modal.scss'
+import React from 'react'
 
-const Modal = ({ sm,lg,children,onClick }) => {
+interface Props{
+    sm?: boolean;
+    lg?: boolean;
+    onClick: () => void;
+}
+
+const Modal:React.FC<Props> = ({ sm,lg,children,onClick }) => {
 
     function hideScroll(){
         document.body.style.overflow = 'hidden';

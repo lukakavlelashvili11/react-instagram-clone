@@ -9,31 +9,32 @@ import './auth.scss'
 import { useError } from '../../utils/useError'
 import InputError from './InputError'
 import AuthLoader from './AuthLoader'
+import React from 'react'
 
-const Register = () => {
+const Register: React.FC = () => {
 
     const dispatch = useDispatch();
-    const [loader,setLoader] = useState(false);
-    const [error,setError] = useState(null);
+    const [loader,setLoader] = useState<boolean>(false);
+    const [error,setError] = useState<object | null>(null);
     const {emailErr,usernameErr,fullnameErr,passwordErr} = useError(error);
 
-    const emailRef = useRef();
-    const fullnameRef = useRef();
-    const usernameRef = useRef();
-    const passwordRef = useRef();
+    const emailRef = useRef<HTMLInputElement>(null);
+    const fullnameRef = useRef<HTMLInputElement>(null);
+    const usernameRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
 
-    async function register(e){
+    async function register(e: React.SyntheticEvent): Promise<void>{
         e.preventDefault();
         try{
             setLoader(true);
             await api.post('/api/register',{
-                email: emailRef.current.value,
-                fullname: fullnameRef.current.value,
-                username: usernameRef.current.value,
-                password: passwordRef.current.value
+                email: emailRef.current?.value,
+                fullname: fullnameRef.current?.value,
+                username: usernameRef.current?.value,
+                password: passwordRef.current?.value
             });
-        }catch(e){
-            setError(e);
+        }catch(err: any){
+            setError(err);
         }finally{
             setLoader(false);
         }
@@ -55,7 +56,7 @@ const Register = () => {
                             <InputError errors={passwordErr}/>
                             <input ref={passwordRef} className="input" type="password" placeholder="Password"/>
                         </div>
-                        <button type="submit" className="button" onClick={register}>
+                        <button type="submit" className="button">
                             <span>Sign up</span>
                         </button>
                     </form>

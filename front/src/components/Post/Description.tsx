@@ -4,6 +4,7 @@ import React from 'react'
 
 interface Props{
     data: IPost;
+    className?: string;
 }
 
 const Description: React.FC<Props> = ({ data }) => {

@@ -1,8 +1,9 @@
 
 type Action = {
     type: 'shown',
-    payload: object
+    payload?: object
 }
+
 
 const isShownViewAll = (state: number = 0,action: Action) => {
     switch(action.type){

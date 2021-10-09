@@ -1,4 +1,9 @@
-const isUpdated = (state = false,action) => {
+
+type Action = {
+    type: 'updated'
+}
+
+const isUpdated = (state: boolean = false,action: Action) => {
     switch(action.type){
         case 'updated':
             return !state;

@@ -2,6 +2,7 @@ import { useEffect,useState } from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import { setLoader } from '../store/actions/setLoader';
 import api from './api'
+import React from  'react'
 
 export const useUser = () => {
 

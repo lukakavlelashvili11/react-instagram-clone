@@ -1,4 +1,5 @@
-interface User {
+interface IUser {
+    id: number;
     fullname: string;
     username:string;
     name: string;
@@ -6,4 +7,4 @@ interface User {
     profile_pic: string;
 }
 
-export default User
+export default IUser

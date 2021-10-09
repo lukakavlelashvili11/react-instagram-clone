@@ -7,8 +7,14 @@ import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../store/actions/updatePosts'
 import api from '../../utils/api'
 import './post.scss'
+import IPost from '../../types/Post.type'
+import React from 'react'
 
-const Reacts = ({ data }) => {
+interface Props{
+    data: IPost;
+}
+
+const Reacts: React.FC<Props> = ({ data }) => {
 
     const dispatch = useDispatch();
 
@@ -32,7 +38,7 @@ const Reacts = ({ data }) => {
         })
     }
 
-    function checkIfPostIsLiked(likes){
+    function checkIfPostIsLiked(likes: IPost["likes"]){
         return likes.filter(like => like.user_id == data.user.id).length > 0
     }
 

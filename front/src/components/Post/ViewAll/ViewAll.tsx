@@ -11,13 +11,15 @@ import Comment from './Comment'
 import Reacts from '../Reacts'
 import Moment from 'react-moment'
 import AddComment from '../AddComment'
+import React from 'react'
+import IPost from '../../../types/Post.type'
 
-const ViewAll = () => {
+const ViewAll: React.FC = () => {
 
-    const [modal,setModal] = useState(false);
+    const [modal,setModal] = useState<boolean>(false);
     // const [modalDataUpdate,setModalDataUpdate] = useState(false);
-    const [userTextsHeight,setUserTextsHeight] = useState(160)
-    const state = useSelector(state => state.shown);
+    const [userTextsHeight,setUserTextsHeight] = useState<number>(160)
+    const state = useSelector<IPost>(state => state.shown);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -33,7 +35,7 @@ const ViewAll = () => {
         setModal(false);
     }
 
-    function getModalHeight(el){
+    function getModalHeight(el: HTMLDivElement | null){
         if(el){
             let height = el.offsetHeight;
             if(height > 250){
@@ -43,7 +45,7 @@ const ViewAll = () => {
         }
     }
 
-    const ViewAllModal = () => {
+    const ViewAllModal = (): JSX.Element => {
         return(
             <Modal onClick={hideModal} lg>
                 <div className="view-all" ref={el => {getModalHeight(el)}}>

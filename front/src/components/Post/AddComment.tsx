@@ -3,20 +3,26 @@ import { useRef } from 'react'
 // import { useUpdatePosts } from "../../utils/useUpdatePosts";
 import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../store/actions/updatePosts'
+import React from 'react'
+import IPost from '../../types/Post.type'
 
-const AddComment = ({ data }) => {
+interface Props{
+    data: IPost;
+}
 
-    const comment = useRef();
+const AddComment: React.FC<Props> = ({ data }) => {
+
+    const comment = useRef<HTMLInputElement | null>(null);
     const dispatch = useDispatch();
     
     function writeComment(){
         api.post('/api/comment/save',{
             user_id: data.user.id,
             post_id: data.id,
-            text: comment.current.value
+            text: comment.current?.value
         })
         .then(() => {
-                comment.current.value = '';
+                comment.current!.value = '';
                 dispatch(updatePosts());
             }
         )

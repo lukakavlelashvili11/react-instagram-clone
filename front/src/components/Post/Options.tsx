@@ -4,16 +4,22 @@ import api from '../../utils/api'
 import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../store/actions/updatePosts'
 import './post.scss'
+import React from 'react'
+import IPost from '../../types/Post.type'
 
-const Options = ({ data }) => {
+interface Props{
+    data?: IPost;
+}
 
-    const [optionsBox,setOptiosBox] = useState(false);
+const Options: React.FC<Props> = ({ data }) => {
+
+    const [optionsBox,setOptiosBox] = useState<boolean>(false);
     const dispatch = useDispatch();
 
     function deletePost(){
         api.post('/api/post/delete',{
-            user_id: data.user.id,
-            id: data.id
+            user_id: data?.user.id,
+            id: data?.id
         })
         .then(() => {
             dispatch(updatePosts);

@@ -1,4 +1,10 @@
-const loaderReducer = (state = false,action) => {
+
+type Action = {
+    type: 'show' | 'close'
+}
+
+
+const loaderReducer = (state: boolean = false,action: Action) => {
     switch(action.type){
         case 'show':
             return !state;

@@ -1,6 +1,12 @@
 import './post.scss'
+import IPost from '../../types/Post.type'
+import React from 'react'
 
-const Description = ({ data }) => {
+interface Props{
+    data: IPost;
+}
+
+const Description: React.FC<Props> = ({ data }) => {
     return(
         <div className="description">
             <span className="description__user-name">{ data.user.fullname }</span>

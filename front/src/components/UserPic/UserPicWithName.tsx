@@ -1,11 +1,12 @@
 import UserPic from './UserPic'
 import './userPic.scss'
 import React from 'react'
-import User from '../../types/User.type'
+import IUser from '../../types/User.type'
+import IPost from '../../types/Post.type'
 
 interface Props {
     size: number;
-    data: object;
+    data: IPost;
 }
 
 

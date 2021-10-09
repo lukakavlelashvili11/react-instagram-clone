@@ -6,8 +6,14 @@ import AddComment from './AddComment'
 import Options from './Options'
 import UserPicWithName from '../UserPic/UserPicWithName'
 import Moment from 'react-moment'
+import React from 'react'
+import Ipost from '../../types/Post.type'
 
-const Post = ({ data }) => {
+interface Props{
+    data: Ipost
+}
+
+const Post: React.FC<Props> = ({ data }) => {
     return(
         <div className="post">
             <div className="post__header">

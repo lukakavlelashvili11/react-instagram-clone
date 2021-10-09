@@ -2,8 +2,14 @@ import UserPic from "../../UserPic/UserPic"
 import CommentsItem from "../CommentsItem"
 import { confMoment } from "../../../utils/confMoment"
 import './viewAll.scss'
+import React from 'react'
+import IComment from '../../../types/Comment.type'
 
-const Comment = ({ data }) => {
+interface Props{
+    data: IComment;
+}
+
+const Comment: React.FC<Props> = ({ data }) => {
     return(
         <div className="comment">
             <UserPic size={35} imageUrl={data.user.profile_pic}/>

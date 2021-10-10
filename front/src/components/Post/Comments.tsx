@@ -3,8 +3,14 @@ import { useDispatch } from "react-redux"
 import { ShowViewAll } from "../../store/actions/ShowViewAll"
 import { useEffect,useState } from "react"
 // import ViewAll from "./ViewAll/ViewAll";
+import React from 'react'
+import IPost from '../../types/Post.type'
 
-const Comments = ({ data }) => {
+interface Props{
+    data: IPost;
+}
+
+const Comments: React.FC<Props> = ({ data }) => {
 
     const dispatch = useDispatch();
     const [dataId,setDataId] = useState(data.id);

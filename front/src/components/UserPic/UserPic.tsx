@@ -6,7 +6,7 @@ interface Props {
     size: number;
     hasStory?: boolean;
     onClick?: () => void;
-    imageUrl: string;
+    imageUrl?: string;
 }
 
 const UserPic: React.FC<Props> = ({ size,hasStory,onClick,imageUrl }) => {

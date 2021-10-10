@@ -10,17 +10,18 @@ import { useError } from '../../utils/useError'
 import api from '../../utils/api'
 import AuthLoader from './AuthLoader'
 import './auth.scss'
+import React from 'react'
 
-const LogIn = () => {
+const LogIn: React.FC = () => {
 
-    const [loader,setLoader] = useState(false);
-    const [error,setError] = useState(null);
+    const [loader,setLoader] = useState<boolean>(false);
+    const [error,setError] = useState<object | null>(null);
     const {emailErr,passwordErr,userErr} = useError(error);
-    const [success,setSuccess] = useState(false);
+    const [success,setSuccess] = useState<boolean>(false);
     const dispatch = useDispatch();
     const history = useHistory();
-    const email = useRef();
-    const password = useRef();
+    const email = useRef<HTMLInputElement>(null);
+    const password = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
         if(success)
@@ -32,13 +33,13 @@ const LogIn = () => {
             try{
                 setLoader(true);
                 await api.post("/api/login", {
-                    email: email.current.value,
-                    password: password.current.value 
+                    email: email.current?.value,
+                    password: password.current?.value 
                 });
                 history.push('/');
                 console.log('sdfgsdfgsdfgsdfgfgfsdgsdfgsdfgsdfg');
                 setSuccess(true);
-            }catch(e){
+            }catch(e: any){
                 setError(e);
             }finally{
                 setLoader(false);

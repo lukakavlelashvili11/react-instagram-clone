@@ -12,14 +12,26 @@ import Reacts from '../Reacts'
 import Moment from 'react-moment'
 import AddComment from '../AddComment'
 import React from 'react'
-import IPost from '../../../types/Post.type'
+import IPost  from '../../../types/Post.type'
+// import IShownViewAll from '../../../store/reducers/isShownViewAll'
+
+interface IShown extends IPost{
+    modalAction: boolean;
+}
+interface IShownViewAll{
+    shown: IShown;
+}
+
+// interface IShown{
+//     shown: object;
+// }
 
 const ViewAll: React.FC = () => {
 
     const [modal,setModal] = useState<boolean>(false);
     // const [modalDataUpdate,setModalDataUpdate] = useState(false);
     const [userTextsHeight,setUserTextsHeight] = useState<number>(160)
-    const state = useSelector<IPost>(state => state.shown);
+    const state = useSelector((state: IShownViewAll) => state.shown);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,7 +43,7 @@ const ViewAll: React.FC = () => {
 
 
     function hideModal(){
-        dispatch(ShowViewAll(0));
+        dispatch(ShowViewAll(undefined,false));
         setModal(false);
     }
 

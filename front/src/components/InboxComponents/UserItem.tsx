@@ -1,7 +1,8 @@
 import UserPic from '../UserPic/UserPic'
 import './inbox.scss'
+import React from 'react'
 
-const UserItem = () => {
+const UserItem: React.FC = () => {
     return(
         <div className="user-item">
             <UserPic size={50}/>

@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../../store/actions/updatePosts'
 import api from '../../../utils/api'
 import React from 'react'
+import { useUser } from '../../../utils/useUser'
 
 const AddPost: React.FC = () => {
 
@@ -16,6 +17,7 @@ const AddPost: React.FC = () => {
     const postText = useRef<HTMLTextAreaElement>(null);
     const fileInput = useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
+    const {userPic} = useUser();
 
     const [animation,setAnimaton] = useState(false);
 
@@ -62,7 +64,7 @@ const AddPost: React.FC = () => {
                     {choosenImgURL && <img src={choosenImgURL} width="100"/>}
                     <input type="file" hidden ref={fileInput} onChange={showChoosenPhoto}/>
                     <div className="write-post">
-                        <UserPic size={30}/>
+                        <UserPic size={30} imageUrl={userPic}/>
                         <textarea className={`text-input ${animation ? 'increase-height' : 'reduce-height'}`} 
                         placeholder="Write something..." 
                         onClick={(e) => {e.stopPropagation();setAnimaton(true);(e.target as HTMLTextAreaElement).click();}} 

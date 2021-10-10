@@ -6,7 +6,7 @@ interface IPost{
     id: number;
     text: string;
     imageurl: string;
-    created_at: number;
+    created_at: string;
     likes: ILike[];
     comments: IComment[];
     user: IUser;

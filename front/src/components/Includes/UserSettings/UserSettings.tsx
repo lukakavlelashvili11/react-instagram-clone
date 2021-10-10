@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import api from '../../../utils/api'
 import './userSetting.scss'
+import React from 'react'
 
-const UserSettings = () => {
+const UserSettings: React.FC = () => {
 
-    const [options,setOptions] = useState(false);
+    const [options,setOptions] = useState<boolean>(false);
 
     function logOut(){
         api.post('/api/logout');
     }
 
-    const Options = () => {
+    const Options = (): JSX.Element => {
         return(
             <div className="options">
                 <ul className="options-list">

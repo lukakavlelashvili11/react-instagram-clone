@@ -2,11 +2,13 @@ import './search.scss'
 import { useState,useEffect } from 'react'
 import api from '../../../utils/api';
 import SearchResultItem from './SearchResultItem';
+import React from 'react'
+import IUser from '../../../types/User.type';
 
-const Search = () => {
+const Search: React.FC = () => {
 
-    const [query,setQuery] = useState('');
-    const [users,setUsers] = useState([]);
+    const [query,setQuery] = useState<string>('');
+    const [users,setUsers] = useState<IUser[]>([]);
 
     useEffect(() => {
         if(!!query){
@@ -17,16 +19,16 @@ const Search = () => {
                 setUsers(res.data);
             })
         }else{
-            setUsers(null);
+            setUsers([]);
         }
     },[query]);
 
-    const SearchResult = () => {
+    const SearchResult = (): JSX.Element => {
         return(
             <div className="search-result">
                 <div className="triangle"></div>
                 <div className="search-result__users">
-                    {users?.map(user => <SearchResultItem user={user}/>)}
+                    {users?.map(user => <SearchResultItem data={user} key={user.id}/>)}
                 </div>
             </div>
         )

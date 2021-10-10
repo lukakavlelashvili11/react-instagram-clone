@@ -1,7 +1,8 @@
 import UserPic from '../UserPic/UserPic'
 import './stories.scss'
+import React from 'react'
 
-const Stories = () => {
+const Stories: React.FC = () => {
     const data = [1,2,3,4,5,6,7,8]
 
     const UserProfile = () => {

@@ -1,7 +1,7 @@
 import moment from 'moment'
 
 
-export const confMoment = (date) => {
+export const confMoment = (date: string): string => {
     let fromNow = moment(date).fromNow();
     if(fromNow.includes('a few seconds')){
         return 'secs ago';

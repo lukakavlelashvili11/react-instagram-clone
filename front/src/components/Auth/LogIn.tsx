@@ -12,6 +12,7 @@ import AuthLoader from './AuthLoader'
 import './auth.scss'
 import React from 'react'
 
+
 const LogIn: React.FC = () => {
 
     const [loader,setLoader] = useState<boolean>(false);

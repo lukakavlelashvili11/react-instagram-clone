@@ -3,10 +3,13 @@ import LoaderLogo from '../../assets/img/loader-logo.png'
 import { useSelector } from 'react-redux'
 import React from 'react'
 
+interface IState{
+    load: boolean;
+}
 
-const Loader = () => {
+const Loader: React.FC = () => {
 
-    const state = useSelector(state => state.load);
+    const state = useSelector((state: IState) => state.load);
 
     const LoaderComponent = () => {
         return(

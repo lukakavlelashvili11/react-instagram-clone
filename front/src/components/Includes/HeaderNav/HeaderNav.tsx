@@ -9,8 +9,9 @@ import Heart from '../Heart/Heart'
 import AddPost from '../AddPost/AddPost'
 import './headerNav.scss'
 import { useLocation,Link } from 'react-router-dom'
+import React from 'react'
 
-const HeaderNav = () => {
+const HeaderNav: React.FC = () => {
     const location = useLocation();
 
     return(

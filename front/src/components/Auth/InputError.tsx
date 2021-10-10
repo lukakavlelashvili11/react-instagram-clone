@@ -2,7 +2,7 @@ import './auth.scss'
 import React from 'react'
 
 interface Props{
-    errors: string[];
+    errors: string[] | undefined;
 }
 
 const InputError: React.FC<Props> = ({ errors }) => {

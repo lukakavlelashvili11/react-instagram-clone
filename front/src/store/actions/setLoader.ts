@@ -1,4 +1,4 @@
-export const setLoader = (state: object) => {
+export const setLoader = (state: boolean) => {
     if(state)
         return{
             type: 'show'

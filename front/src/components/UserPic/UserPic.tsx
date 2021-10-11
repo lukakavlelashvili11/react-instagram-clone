@@ -13,13 +13,13 @@ interface Props {
 
 const UserPic: React.FC<Props> = ({ size,hasStory,onClick,imageUrl }) => {
     return(
-        <Link to="/user/2">
+        // <Link to="/user/2">
             <div className={`circle ${hasStory && 'insta-circle'}`} onClick={onClick}>
                 <div className={`user-picture ${hasStory && 'border-around-pic'}`} style={{ height: `${size}px`,width: `${size}px` }}>
                     <img src={imageUrl ? imageUrl : UserPlaceholder} alt="user"/>
                 </div>
             </div>
-        </Link>
+        // </Link>
     )
 }
 

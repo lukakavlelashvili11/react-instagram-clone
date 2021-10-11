@@ -39,6 +39,7 @@ Route::post('/register',[RegisterController::class,'store']);
 Route::post('/search',[UserController::class,'search']);
 //User
 Route::post('/user/store/picture',[UserController::class,'storePicture']);
+Route::get('/user/{id}',[UserController::class,'getUserById']);
 
 Route::post('/login',[LoginController::class,'logIn']);
 Route::post('/logout',[LogOutController::class,'logOut']);

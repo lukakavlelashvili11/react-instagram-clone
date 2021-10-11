@@ -2,12 +2,16 @@ import React,{ useRef } from 'react'
 import UserPic from '../UserPic/UserPic'
 import api from '../../utils/api'
 import { useUser } from '../../utils/useUser'
+import IUser from '../../types/User.type'
 import './user.scss'
 
-const UserData: React.FC = () => {
+interface Props{
+    data: IUser | null;
+}
+
+const UserData: React.FC<Props> = ({ data }) => {
 
     const file = useRef<HTMLInputElement>(null);
-    const {fullname,username,userPic} = useUser();
 
     function browseFiles(){
         file.current!.click();
@@ -30,13 +34,13 @@ const UserData: React.FC = () => {
     return (
         <div className="user-info">
             <div className="user-info__picture">
-                <UserPic hasStory imageUrl={userPic} size={140} onClick={browseFiles}/>
+                <UserPic hasStory imageUrl={data?.profile_pic} size={140} onClick={browseFiles}/>
                 <input type="file" ref={file} onChange={uploadPhoto} hidden/>
             </div>
             <div className="user-info__data">
                 <div className="user-info__data__inner">
                     <div className="user-name-actions">
-                        <span className="username">{ username }</span>
+                        <span className="username">{ data?.username }</span>
                         <button className="edit-profile">Edit Profile</button>
                     </div>
                     <div className="quantities">
@@ -44,7 +48,7 @@ const UserData: React.FC = () => {
                         <span>0 followers</span>
                         <span>0 following</span>
                     </div>
-                    <span className="fullname">{ fullname }</span>
+                    <span className="fullname">{ data?.fullname }</span>
                 </div>
             </div>
         </div>

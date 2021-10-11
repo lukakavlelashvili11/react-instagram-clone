@@ -33,7 +33,7 @@ function App() {
           <Route path="/explore">
             <Explore/>
           </Route>
-          <Route path="/user">
+          <Route path="/user/:id">
             <User/>
           </Route>
         </Switch>

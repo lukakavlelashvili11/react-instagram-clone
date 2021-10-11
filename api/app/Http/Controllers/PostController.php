@@ -23,7 +23,7 @@ class PostController extends Controller
         if($request->file()){
             $file_name_for_front = $this->storeImage($request);
             $this->postRepository->store([
-                'user_id' => 2,
+                'user_id' => auth()->user()->id,
                 'text' => $request->text,
                 'imageurl' => $file_name_for_front
             ]);

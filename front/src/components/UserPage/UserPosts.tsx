@@ -1,25 +1,20 @@
 import React,{ useEffect,useState } from 'react'
 import api from '../../utils/api';
-import IPost from '../../types/Post.type';
+import IUser from '../../types/User.type';
 import './user.scss'
 
-const UserPosts: React.FC = () => {
+interface Props{
+    data: IUser | null;
+}
 
-    const [posts,setPosts] = useState<IPost[]>([]);
-
-    useEffect((): void => {
-        (async (): Promise<void> => {
-            let data = await api.get('/api/post');
-            setPosts(data.data);
-        })()
-    });
+const UserPosts: React.FC<Props> = ({ data }) => {
 
     return(
         <div className="user-posts">
             <div className="user-posts__inner">
                 {
-                    posts.map(el => 
-                        <div className="post-item">
+                    data?.posts.map(el => 
+                        <div className="post-item" key={el.id}>
                             <img src={el.imageurl}/>
                         </div>
                     )

@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Repositories\UserRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository){
+        $this->userRepository = $userRepository;
+    }
+
     public function storePicture(Request $request): void{
         if($request->file()){
             $file_name_for_front = $this->storeImage($request);
@@ -28,5 +36,10 @@ class UserController extends Controller
             ['username','like','%'.$request->term.'%'],
             ['fullname','like','%'.$request->term.'%']
         ])->get();
+    }
+
+    public function getUserById(Request $request){
+        $data = $this->userRepository->getUserById($request);
+        return response()->json($data);
     }
 }

@@ -4,13 +4,16 @@ import { useState } from 'react'
 import api from '../../../utils/api'
 import './userSetting.scss'
 import React from 'react'
+import Cookies from 'universal-cookie'
 
 const UserSettings: React.FC = () => {
 
     const [options,setOptions] = useState<boolean>(false);
+    const cookie = new Cookies();
 
-    function logOut(){
-        api.post('/api/logout');
+    async function logOut(){
+        await api.post('/api/logout');
+        cookie.remove('XSRF-TOKEN');
     }
 
     const Options = (): JSX.Element => {

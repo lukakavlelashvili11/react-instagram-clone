@@ -3,6 +3,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { setLoader } from '../store/actions/setLoader';
 import api from './api'
 import IUser from '../types/User.type'
+import Cookies from 'universal-cookie'
 
 interface ILogIn{
     loggedIn: boolean;
@@ -14,16 +15,26 @@ export const useUser = () => {
     const [userData,setUserData] = useState<IUser | null>(null);
     const dispatch = useDispatch();
     const state = useSelector((state: ILogIn) => state.loggedIn)
+    const cookie = new Cookies();
+
+    // useEffect(() => {
+        
+    //         setIsLoggedIn(true);
+    //     }else{
+    //         setIsLoggedIn(false);
+    //     }
+    // },[]);
 
     useEffect((): void => {
         (async () => {
-            if(!isLoggedIn){
+            let token = cookie.get('XSRF-TOKEN');
+            if(!!token && userData === null){
                 try{
                     dispatch(setLoader(true));
                     let response = await api.get('/api/user');
                     setIsLoggedIn(true);
                     setUserData(response.data);
-                }catch(e){
+                }catch(e: any){
                     setIsLoggedIn(false);
                 }finally{
                     dispatch(setLoader(false));

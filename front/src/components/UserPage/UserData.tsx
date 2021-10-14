@@ -12,6 +12,7 @@ interface Props{
 const UserData: React.FC<Props> = ({ data }) => {
 
     const file = useRef<HTMLInputElement>(null);
+    const {id} = useUser();
 
     function browseFiles(){
         file.current!.click();
@@ -31,6 +32,11 @@ const UserData: React.FC<Props> = ({ data }) => {
         })
     }
 
+    async function follow(user_id?: number): Promise<void>{
+        let data = await api.post(`/api/follow/save/${user_id}`);
+        console.log(data);
+    }
+
     return (
         <div className="user-info">
             <div className="user-info__picture">
@@ -41,7 +47,11 @@ const UserData: React.FC<Props> = ({ data }) => {
                 <div className="user-info__data__inner">
                     <div className="user-name-actions">
                         <span className="username">{ data?.username }</span>
+                        {id == data?.id ? 
                         <button className="edit-profile">Edit Profile</button>
+                        :
+                        <button className="follow-profile" onClick={() => follow(data?.id)}>Follow</button>
+                        }
                     </div>
                     <div className="quantities">
                         <span>{ data?.posts.length } posts</span>

@@ -20,6 +20,9 @@ class UserRepository{
     public function getUserById(Request $request): User{
         return $this->user
         ->where('id',$request->id)
+        ->with(['followers' => function($q){
+            $q->with('user');
+        }])
         ->when(!!$request->post,function($q){
             $q->with(['posts' => function($q){
                 $q->with(['comments' => function($q){
@@ -27,6 +30,6 @@ class UserRepository{
                 },'likes','user'])->latest('created_at');
             }]);
         })
-        ->firstOrFail();;
+        ->firstOrFail();
     }
 }

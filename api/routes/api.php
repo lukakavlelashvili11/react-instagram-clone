@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogOutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -53,3 +54,5 @@ Route::post('/post/delete',[PostController::class,'delete']);
 Route::post('/comment/save',[CommentController::class,'store']);
 Route::post('/like/save',[LikeController::class,'store']);
 Route::post('/like/delete',[LikeController::class,'delete']);
+
+Route::post('/follow/save/{id}',[FollowController::class,'store']);

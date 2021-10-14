@@ -16,7 +16,7 @@ const UserPicWithName: React.FC<Props> = ({ size,data }) => {
         <Link to={`/user/${data.user.id}`}>
             <div className="user">
                 <UserPic size={size} imageUrl={data.user.profile_pic}/>
-                <div className="user__name">{ data.user.fullname }</div>
+                <div className="user__name">{ data.user.username }</div>
             </div>
         </Link>
     )

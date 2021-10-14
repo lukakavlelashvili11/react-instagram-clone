@@ -44,7 +44,7 @@ const UserData: React.FC<Props> = ({ data }) => {
                         <button className="edit-profile">Edit Profile</button>
                     </div>
                     <div className="quantities">
-                        <span>0 posts</span>
+                        <span>{ data?.posts.length } posts</span>
                         <span>0 followers</span>
                         <span>0 following</span>
                     </div>

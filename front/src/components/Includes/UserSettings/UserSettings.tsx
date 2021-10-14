@@ -1,13 +1,14 @@
 import UserPic from '../../UserPic/UserPic'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import api from '../../../utils/api'
+import { useUser } from '../../../utils/useUser'
 import './userSetting.scss'
-import React from 'react'
 import Cookies from 'universal-cookie'
 
 const UserSettings: React.FC = () => {
 
+    const {userPic,id} = useUser();
     const [options,setOptions] = useState<boolean>(false);
     const cookie = new Cookies();
 
@@ -21,7 +22,7 @@ const UserSettings: React.FC = () => {
             <div className="options">
                 <ul className="options-list">
                     <li className="options-list-item">
-                        <Link to='/user'>Profile</Link>
+                        <Link to={`/user/${id}`}>Profile</Link>
                     </li>
                     <li onClick={logOut}>Log out</li>
                 </ul>
@@ -32,7 +33,7 @@ const UserSettings: React.FC = () => {
     return(
         <div>
             <div onClick={ () => setOptions(!options) }>
-                <UserPic size={25}/>
+                <UserPic size={25} imageUrl={userPic}/>
             </div>
             {options && <Options/>}
         </div>

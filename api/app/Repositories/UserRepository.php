@@ -22,7 +22,9 @@ class UserRepository{
         ->where('id',$request->id)
         ->when(!!$request->post,function($q){
             $q->with(['posts' => function($q){
-                $q->with(['comments','likes'])->latest('created_at');
+                $q->with(['comments' => function($q){
+                    $q->with('user');
+                },'likes','user'])->latest('created_at');
             }]);
         })
         ->firstOrFail();;

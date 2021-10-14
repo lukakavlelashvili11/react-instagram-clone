@@ -51,6 +51,7 @@ export const useUser = () => {
 
     return {
         isLoggedIn,
+        id: userData?.id,
         fullname: userData?.fullname,
         username: userData?.username,
         email: userData?.email,

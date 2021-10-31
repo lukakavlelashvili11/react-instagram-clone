@@ -27,8 +27,8 @@ export const useUser = () => {
 
     useEffect((): void => {
         (async () => {
-            let token = cookie.get('XSRF-TOKEN');
-            if(!!token && userData === null){
+            // let token = cookie.get('XSRF-TOKEN');
+            // if(!!token && userData === null){
                 try{
                     dispatch(setLoader(true));
                     let response = await api.get('/api/user');
@@ -39,7 +39,7 @@ export const useUser = () => {
                 }finally{
                     dispatch(setLoader(false));
                 }
-            }
+            // }
         })()
     },[]);
 

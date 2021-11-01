@@ -38,18 +38,13 @@ const LogIn: React.FC = () => {
                     password: password.current?.value 
                 });
                 history.push('/');
-                console.log('sdfgsdfgsdfgsdfgfgfsdgsdfgsdfgsdfg');
-                setSuccess(true);
+                // setSuccess(true);
             }catch(e: any){
                 setError(e);
             }finally{
                 setLoader(false);
             }
         }); 
-        // dispatch(logIn({
-        //     email: email.current.value,
-        //     password: password.current.value
-        // }));
     }
 
     return (

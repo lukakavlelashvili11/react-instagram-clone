@@ -23,6 +23,9 @@ class UserRepository{
         ->with(['followers' => function($q){
             $q->with('user');
         }])
+        ->with(['following' => function($q){
+            $q->with('user');
+        }])
         ->when(!!$request->post,function($q){
             $q->with(['posts' => function($q){
                 $q->with(['comments' => function($q){

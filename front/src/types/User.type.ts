@@ -1,4 +1,5 @@
 import IPost from './Post.type'
+import IFollow from './Follow.type'
 
 interface IUser {
     id: number;
@@ -7,7 +8,9 @@ interface IUser {
     name: string;
     email: string;
     profile_pic: string;
-    posts: IPost[]
+    posts: IPost[];
+    followers: IFollow[];
+    following: IFollow[];
 }
 
 export default IUser

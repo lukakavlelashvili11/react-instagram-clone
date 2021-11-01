@@ -55,8 +55,8 @@ const UserData: React.FC<Props> = ({ data }) => {
                     </div>
                     <div className="quantities">
                         <span>{ data?.posts.length } posts</span>
-                        <span>0 followers</span>
-                        <span>0 following</span>
+                        <span>{ data?.followers.length } followers</span>
+                        <span>{ data?.following.length } following</span>
                     </div>
                     <span className="fullname">{ data?.fullname }</span>
                 </div>

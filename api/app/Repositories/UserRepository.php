@@ -20,6 +20,7 @@ class UserRepository{
     public function getUserById(Request $request): User{
         return $this->user
         ->where('id',$request->id)
+        // ->with(['followers','following'])
         ->with(['followers' => function($q){
             $q->with('user');
         }])

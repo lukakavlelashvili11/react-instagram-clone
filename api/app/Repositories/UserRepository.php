@@ -20,13 +20,13 @@ class UserRepository{
     public function getUserById(Request $request): User{
         return $this->user
         ->where('id',$request->id)
-        // ->with(['followers','following'])
-        ->with(['followers' => function($q){
-            $q->with('user');
-        }])
-        ->with(['following' => function($q){
-            $q->with('user');
-        }])
+        ->with(['followers','following'])
+        // ->with(['followers' => function($q){
+        //     $q->with('user');
+        // }])
+        // ->with(['following' => function($q){
+        //     $q->with('user');
+        // }])
         ->when(!!$request->post,function($q){
             $q->with(['posts' => function($q){
                 $q->with(['comments' => function($q){

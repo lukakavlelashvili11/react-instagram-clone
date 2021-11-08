@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserValidator;
 use App\Repositories\UserRepository;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
@@ -24,5 +26,9 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password)
         ]);
+
+        if(!Auth::attempt($request->only('email','password'))){
+            throw new AuthenticationException();
+        }
     }
 }

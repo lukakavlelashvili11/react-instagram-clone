@@ -16,7 +16,7 @@ class FollowController extends Controller
     public function store(Request $request){
         $this->followRepository->store([
             'follower_id' => auth()->user()->id,
-            'following_id' => $request->id
+            'user_id' => $request->id
         ]);
     }
 }

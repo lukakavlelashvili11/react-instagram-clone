@@ -50,6 +50,10 @@
                 span{
                     margin-right: 30px;
                 }
+                .follow-info{
+                    cursor: pointer;
+                    user-select: none;
+                }
             }
             .fullname{
                 font-weight: 600;
@@ -140,5 +144,13 @@
             //     object-fit: cover;
             // }
         }
+    }
+}
+
+.follow-data{
+    padding: 0px;
+    list-style: none;
+    &__item{
+        padding: 10px;
     }
 }

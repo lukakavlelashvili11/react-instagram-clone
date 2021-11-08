@@ -1,6 +1,7 @@
 .user-picture{
     border-radius: 50%;
     overflow: hidden;
+    background: rgb(250,250,250);
     img{
         height: 100%;
         width: 100%;
@@ -25,9 +26,14 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    &__name{
+    .user-names{
         margin-left: 12px;
-        color: black;
+        .username{
+            color: black;
+        }
+        .fullname{
+            color: rgb(142,142,142);
+        }
     }
 }
 a{

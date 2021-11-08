@@ -21,7 +21,7 @@ const User: React.FC = () => {
             setData(resp.data);
             console.log(resp.data);
         })()
-    },[])
+    },[id])
 
     return(
         <div className="user-page">

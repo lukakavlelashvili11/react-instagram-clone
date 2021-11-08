@@ -1,11 +1,3 @@
-// interface LogInState{
-//     state: boolean;
-// }
-
-// const state = {
-//     state: false;
-// }
-
 type Action = {
     type: 'loggedIn'
 }

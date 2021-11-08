@@ -2,6 +2,7 @@ import './search.scss'
 import UserPic from '../../UserPic/UserPic'
 import React from 'react'
 import IUser from '../../../types/User.type'
+import UserPicWithName from '../../UserPic/UserPicWithName'
 
 interface Props{
     data: IUser;
@@ -10,11 +11,7 @@ interface Props{
 const SearchResultItem: React.FC<Props> = ({ data }) => {
     return(
         <div className="search-result__item">
-            <UserPic size={45} imageUrl={data.profile_pic}/>
-            <div className="names">
-                <span className="username">{ data.username }</span>
-                <span className="fullname">{ data.fullname }</span>
-            </div>
+            <UserPicWithName size={45} data={data}/>
         </div>
     )
 }

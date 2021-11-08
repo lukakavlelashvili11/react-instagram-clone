@@ -66,7 +66,7 @@ const ViewAll: React.FC = () => {
                     </div>
                     <div className="comments-side">
                         <div className="user-details">
-                            <UserPicWithName size={35} data={state}/>
+                            <UserPicWithName size={35} data={state.user}/>
                             <Options/>
                         </div>
                         <div className="user-texts" style={{ height: userTextsHeight+'px' }}>

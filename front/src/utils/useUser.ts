@@ -12,7 +12,7 @@ interface ILogIn{
 export const useUser = () => {
 
     const [isLoggedIn,setIsLoggedIn] = useState<boolean>(false);
-    const [userData,setUserData] = useState<IUser | null>(null);
+    const [userData,setUserData] = useState<IUser>();
     const dispatch = useDispatch();
     const state = useSelector((state: ILogIn) => state.loggedIn)
     const cookie = new Cookies();
@@ -55,6 +55,7 @@ export const useUser = () => {
         fullname: userData?.fullname,
         username: userData?.username,
         email: userData?.email,
-        userPic: userData?.profile_pic
+        userPic: userData?.profile_pic,
+        user: userData
     };
 }

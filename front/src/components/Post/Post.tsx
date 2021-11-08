@@ -17,7 +17,7 @@ const Post: React.FC<Props> = ({ data }) => {
     return(
         <div className="post">
             <div className="post__header">
-                <UserPicWithName size={30} data={data}/>
+                <UserPicWithName size={30} data={data.user} withoutFN/>
                 <Options data={data}/>
             </div>
             <div className="post__content">

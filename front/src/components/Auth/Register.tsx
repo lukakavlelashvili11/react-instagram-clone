@@ -2,7 +2,7 @@ import InstagramLogo from '../../assets/img/insta-logo.png'
 import FacebookLogo from '../../assets/img/facebook-logo.png'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../store/actions/logIn'
-import { Link } from 'react-router-dom'
+import { Link,useHistory } from 'react-router-dom'
 import { useRef,useState } from 'react'
 import api from '../../utils/api'
 import './auth.scss'
@@ -14,6 +14,7 @@ import React from 'react'
 const Register: React.FC = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const [loader,setLoader] = useState<boolean>(false);
     const [error,setError] = useState<object | null>(null);
     const {emailErr,usernameErr,fullnameErr,passwordErr} = useError(error);
@@ -33,6 +34,8 @@ const Register: React.FC = () => {
                 username: usernameRef.current?.value,
                 password: passwordRef.current?.value
             });
+            dispatch(logIn());
+            history.push('/');
         }catch(err: any){
             setError(err);
         }finally{

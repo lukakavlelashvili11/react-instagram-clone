@@ -24,12 +24,13 @@ const LogIn: React.FC = () => {
     const email = useRef<HTMLInputElement>(null);
     const password = useRef<HTMLInputElement>(null);
 
-    useEffect(() => {
-        if(success)
-        dispatch(logIn());
-    },[success])
 
-    function logIn(){
+    // useEffect(() => {
+    //     if(success)
+    //     dispatch(logIn());
+    // },[success])
+
+    function logInUser(){
         api.get("/sanctum/csrf-cookie").then(async () => {
             try{
                 setLoader(true);
@@ -39,6 +40,7 @@ const LogIn: React.FC = () => {
                 });
                 history.push('/');
                 // setSuccess(true);
+                dispatch(logIn());
             }catch(e: any){
                 setError(e);
             }finally{
@@ -52,7 +54,7 @@ const LogIn: React.FC = () => {
             <div className="auth__inner">
                 <img className="logo" src={InstagramLogo} alt="instagram"/>
                 <div className="form">
-                    <form onSubmit={(e) => {e.preventDefault(); logIn()}}>
+                    <form onSubmit={(e) => {e.preventDefault(); logInUser()}}>
                     <InputError errors={userErr}/>
                         <div className="inputs">
                             <InputError errors={emailErr}/>
@@ -60,7 +62,7 @@ const LogIn: React.FC = () => {
                             <InputError errors={passwordErr}/>
                             <input ref={password} className="input" type="password" placeholder="Password"/>
                         </div>
-                        <button type="submit" className="button" onClick={logIn}>
+                        <button type="submit" className="button" onClick={logInUser}>
                             <span>Log In</span>
                         </button>
                     </form>

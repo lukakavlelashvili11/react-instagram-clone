@@ -9,8 +9,8 @@ interface IUser {
     email: string;
     profile_pic: string;
     posts: IPost[];
-    followers: IFollow[];
-    following: IFollow[];
+    followers: IUser[];
+    following: IUser[];
 }
 
 export default IUser

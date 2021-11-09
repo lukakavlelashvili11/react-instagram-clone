@@ -15,11 +15,9 @@ import Register from './components/Auth/Register'
 function App() {
 
   const { isLoggedIn } = useUser();
-  
-  return (
-    <div>
-      <Loader/>
-      {isLoggedIn ?
+
+  const DefaultPage = () => {
+    return(
       <Default>
         <Header/>
         <ViewAll/>
@@ -38,7 +36,11 @@ function App() {
           </Route>
         </Switch>
       </Default>
-      :
+    );
+  }
+
+  const AuthPage = () => {
+    return(
       <Auth>
         <Route path="/" exact> 
           <LogIn/>
@@ -49,7 +51,14 @@ function App() {
         <Route path="/register"> 
           <Register/>
         </Route>
-      </Auth>}
+      </Auth>
+    );
+  }
+  
+  return (
+    <div>
+      <Loader/>
+      { isLoggedIn ? <DefaultPage/> : <AuthPage/> }
     </div>
   );
 }

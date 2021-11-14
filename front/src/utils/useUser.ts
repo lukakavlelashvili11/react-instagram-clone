@@ -24,20 +24,32 @@ export const useUser = () => {
     //         setIsLoggedIn(false);
     //     }
     // },[]);
+    function storeUser(user: IUser){
+        cookie.set('user',user);
+        // console.log('sdfgsdfsdfg');
+        // console.log(cookie.get('user'));
+    }
 
     useEffect((): void => {
         (async () => {
+            console.log('sdfgsdfsdfg');
+        console.log(cookie.get('user'));
             // let token = cookie.get('XSRF-TOKEN');
             // if(!!token && userData === null){
-                try{
-                    dispatch(setLoader(true));
-                    let response = await api.get('/api/user');
+                if(!!!cookie.get('user')){
+                    try{
+                        dispatch(setLoader(true));
+                        let response = await api.get('/api/user');
+                        setIsLoggedIn(true);
+                        storeUser(response.data);
+                        setUserData(response.data);
+                    }catch(e: any){
+                        setIsLoggedIn(false);
+                    }finally{
+                        dispatch(setLoader(false));
+                    }
+                }else{
                     setIsLoggedIn(true);
-                    setUserData(response.data);
-                }catch(e: any){
-                    setIsLoggedIn(false);
-                }finally{
-                    dispatch(setLoader(false));
                 }
             // }
         })()
@@ -51,11 +63,7 @@ export const useUser = () => {
 
     return {
         isLoggedIn,
-        id: userData?.id,
-        fullname: userData?.fullname,
-        username: userData?.username,
-        email: userData?.email,
-        userPic: userData?.profile_pic,
-        user: userData
+        ...cookie.get('user'),
+        user: cookie.get('user')
     };
 }

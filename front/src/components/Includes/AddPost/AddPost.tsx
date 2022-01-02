@@ -17,7 +17,7 @@ const AddPost: React.FC = () => {
     const postText = useRef<HTMLTextAreaElement>(null);
     const fileInput = useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
-    const {userPic} = useUser();
+    const { profile_pic } = useUser();
 
     const [animation,setAnimaton] = useState(false);
 
@@ -64,7 +64,7 @@ const AddPost: React.FC = () => {
                     {choosenImgURL && <img src={choosenImgURL} width="100"/>}
                     <input type="file" hidden ref={fileInput} onChange={showChoosenPhoto}/>
                     <div className="write-post">
-                        <UserPic size={30} imageUrl={userPic}/>
+                        <UserPic size={30} imageUrl={ profile_pic }/>
                         <textarea className={`text-input ${animation ? 'increase-height' : 'reduce-height'}`} 
                         placeholder="Write something..." 
                         onClick={(e) => {e.stopPropagation();setAnimaton(true);(e.target as HTMLTextAreaElement).click();}} 

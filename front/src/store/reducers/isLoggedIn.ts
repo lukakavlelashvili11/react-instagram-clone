@@ -1,11 +1,12 @@
 type Action = {
-    type: 'loggedIn'
+    type: 'loggedIn',
+    payload?: object
 }
 
-const isLoggedIn = (state: boolean = false,action: Action) => {
+const isLoggedIn = (state: number = 0,action: Action) => {
     switch(action.type){
         case 'loggedIn':
-            return !state;
+            return action.payload;
         default:
             return state;
     }

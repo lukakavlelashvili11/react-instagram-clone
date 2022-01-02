@@ -3,10 +3,11 @@ import { useDispatch,useSelector } from 'react-redux';
 import { setLoader } from '../store/actions/setLoader';
 import api from './api'
 import IUser from '../types/User.type'
-import Cookies from 'universal-cookie'
+import { logIn } from '../store/actions/logIn';
+// import Cookies from 'universal-cookie'
 
 interface ILogIn{
-    loggedIn: boolean;
+    loggedIn: IUser;
 }
 
 export const useUser = () => {
@@ -15,7 +16,7 @@ export const useUser = () => {
     const [userData,setUserData] = useState<IUser>();
     const dispatch = useDispatch();
     const state = useSelector((state: ILogIn) => state.loggedIn)
-    const cookie = new Cookies();
+    // const cookie = new Cookies();
 
     // useEffect(() => {
         
@@ -24,46 +25,49 @@ export const useUser = () => {
     //         setIsLoggedIn(false);
     //     }
     // },[]);
-    function storeUser(user: IUser){
-        cookie.set('user',user);
-        // console.log('sdfgsdfsdfg');
-        // console.log(cookie.get('user'));
-    }
+    // function storeUser(user: IUser){
+    //     cookie.set('user',user);
+    //     // console.log('sdfgsdfsdfg');
+    //     // console.log(cookie.get('user'));
 
     useEffect((): void => {
         (async () => {
-            console.log('sdfgsdfsdfg');
-        console.log(cookie.get('user'));
-            // let token = cookie.get('XSRF-TOKEN');
-            // if(!!token && userData === null){
-                if(!!!cookie.get('user')){
-                    try{
-                        dispatch(setLoader(true));
-                        let response = await api.get('/api/user');
-                        setIsLoggedIn(true);
-                        storeUser(response.data);
-                        setUserData(response.data);
-                    }catch(e: any){
-                        setIsLoggedIn(false);
-                    }finally{
-                        dispatch(setLoader(false));
-                    }
-                }else{
+            if(!!!state){
+                try{
+                    dispatch(setLoader(true));
+                    let response = await api.get('/api/user');
+                    dispatch(logIn(response.data));
                     setIsLoggedIn(true);
+                    // storeUser(response.data);
+                    // setUserData(response.data);
+                }catch(e: any){
+                    setIsLoggedIn(false);
+                }finally{
+                    dispatch(setLoader(false));
                 }
-            // }
+            }
         })()
-    },[]);
+    },[])
+    // }
 
-    useEffect(() => {
-        if(state){
+    useEffect((): void => {
+        if(!!state){
             setIsLoggedIn(true);
+            setUserData(state);
+        }else{
+            setIsLoggedIn(false);
         }
-    },[state])
+    },[state]);
+
+    // useEffect(() => {
+    //     if(state){
+    //         setIsLoggedIn(true);
+    //     }
+    // },[state])
 
     return {
         isLoggedIn,
-        ...cookie.get('user'),
-        user: cookie.get('user')
+        ...userData,
+        user: userData
     };
 }

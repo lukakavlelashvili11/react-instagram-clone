@@ -34,7 +34,8 @@ const Register: React.FC = () => {
                 username: usernameRef.current?.value,
                 password: passwordRef.current?.value
             });
-            dispatch(logIn());
+            let response = await api.get('/api/user');
+            dispatch(logIn(response));
             history.push('/');
         }catch(err: any){
             setError(err);

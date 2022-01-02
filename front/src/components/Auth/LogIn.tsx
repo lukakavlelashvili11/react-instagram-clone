@@ -38,9 +38,11 @@ const LogIn: React.FC = () => {
                     email: email.current?.value,
                     password: password.current?.value 
                 });
+                let response = await api.get('/api/user');
                 history.push('/');
                 // setSuccess(true);
-                dispatch(logIn());
+                dispatch(logIn(response.data));
+                console.log(response);
             }catch(e: any){
                 setError(e);
             }finally{

@@ -36,7 +36,7 @@ class PostController extends Controller
 
     public function storeImage($request): string{
         $file_name = time().'_'.$request->image->getClientOriginalName();
-        $request->file('image')->storeAs('uploads/2',$file_name,'public');
-        return asset('storage/uploads/2/'.$file_name);
+        $request->file('image')->storeAs('uploads/'.auth()->user()->id.'/posts',$file_name,'public');
+        return asset('storage/uploads/'.auth()->user()->id.'/posts/'.$file_name);
     }
 }

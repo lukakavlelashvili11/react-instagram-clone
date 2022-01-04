@@ -37,3 +37,23 @@
         justify-content: center;
     }
 }
+
+.inner-story{
+    width: 444px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background: yellow;
+    border-radius: 10px;
+    -webkit-box-align: stretch;
+    position: relative;
+    // flex: 0 0 1;
+    img{
+        width: 100%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}

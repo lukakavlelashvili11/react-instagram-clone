@@ -3,6 +3,7 @@ import Main from './pages/Main'
 import Inbox from './pages/Inbox'
 import Explore from './pages/Explore'
 import User from './pages/User'
+import Stories from './pages/Stories'
 import LogIn from './components/Auth/LogIn'
 import Default from './components/layouts/Default'
 import Auth from './components/layouts/Auth'
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/user/:id">
             <User/>
+          </Route>
+          <Route path="/stories">
+            <Stories/>
           </Route>
         </Switch>
       </Default>

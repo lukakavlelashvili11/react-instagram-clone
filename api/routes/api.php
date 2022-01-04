@@ -1,13 +1,13 @@
 <?php
 
+use App\Domains\Comments\Controllers\CommentController;
+use App\Domains\Follows\Controllers\FollowController;
+use App\Domains\Likes\Controllers\LikeController;
+use App\Domains\Posts\Controllers\PostController;
+use App\Domains\Users\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogOutController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\FollowController;
-use App\Http\Controllers\LikeController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,10 +31,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::post('/register', 'UserController@register');
 // Route::get('/logout', 'UserController@logout');
 
-
-Route::get('/test',function(){
-    return 'worrkss';
-});
 
 Route::post('/register',[RegisterController::class,'store']);
 Route::post('/search',[UserController::class,'search']);

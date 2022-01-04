@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace App\Domains\Likes\Repositories;
 
-use App\Models\Like;
+use App\Domains\Likes\Models\Like;
 
 class LikeRepository{
 

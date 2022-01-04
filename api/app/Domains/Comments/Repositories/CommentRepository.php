@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace App\Domains\Comments\Repositories;
 
-use App\Models\Comment;
+use App\Domains\Comments\Models\Comment;
 
 class CommentRepository{
 

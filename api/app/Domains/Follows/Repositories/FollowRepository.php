@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace App\Domains\Follows\Repositories;
 
-use App\Models\Follow;
+use App\Domains\Follows\Models\Follow;
 
 class FollowRepository{
 

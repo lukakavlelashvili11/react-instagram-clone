@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Domains\Users\Models\User;
+use App\Domains\Users\Repositories\UserRepository;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserValidator;
-use App\Repositories\UserRepository;
+use App\Domains\Users\Requests\UserValidator;
 use Illuminate\Auth\AuthenticationException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -19,7 +18,7 @@ class RegisterController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function store(UserValidator $request): void{
+    public function store(UserValidator $request): User{
         $this->userRepository->store([
             'username' => $request->username,
             'fullname' => $request->fullname,
@@ -29,6 +28,8 @@ class RegisterController extends Controller
 
         if(!Auth::attempt($request->only('email','password'))){
             throw new AuthenticationException();
+        }else{
+            return auth()->user();
         }
     }
 }

@@ -1,9 +1,9 @@
 import api from "../../utils/api"
-import { useRef } from 'react'
+import React,{ useRef,useState } from 'react'
 // import { useUpdatePosts } from "../../utils/useUpdatePosts";
 import { useDispatch } from 'react-redux'
 import { updatePosts } from '../../store/actions/updatePosts'
-import React from 'react'
+import CircleLoader from '../Loader/CircleLoader'
 import IPost from '../../types/Post.type'
 
 interface Props{
@@ -13,9 +13,11 @@ interface Props{
 const AddComment: React.FC<Props> = ({ data }) => {
 
     const comment = useRef<HTMLInputElement | null>(null);
+    const [success,setSuccess] = useState<boolean>(false);
     const dispatch = useDispatch();
     
     function writeComment(){
+        setSuccess(true);
         api.post('/api/comment/save',{
             user_id: data.user.id,
             post_id: data.id,
@@ -24,14 +26,14 @@ const AddComment: React.FC<Props> = ({ data }) => {
         .then(() => {
                 comment.current!.value = '';
                 dispatch(updatePosts());
-            }
-        )
+                setSuccess(false);
+            })
     }
     return(
         <div className="add-comment">
             <span>smile</span>
             <input ref={comment} className="add-comment__input" type="text" placeholder="Add a comment..."/>
-            <span onClick={writeComment}>Post</span>
+            {!success ? <span onClick={writeComment}>Post</span> : <CircleLoader/>}
         </div>
     )
 }

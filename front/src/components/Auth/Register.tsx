@@ -8,7 +8,7 @@ import api from '../../utils/api'
 import './auth.scss'
 import { useError } from '../../utils/useError'
 import InputError from './InputError'
-import AuthLoader from './AuthLoader'
+import AuthLoader from '../Loader/CircleLoader'
 import React from 'react'
 
 const Register: React.FC = () => {
@@ -28,13 +28,12 @@ const Register: React.FC = () => {
         e.preventDefault();
         try{
             setLoader(true);
-            await api.post('/api/register',{
+            let response = await api.post('/api/register',{
                 email: emailRef.current?.value,
                 fullname: fullnameRef.current?.value,
                 username: usernameRef.current?.value,
                 password: passwordRef.current?.value
             });
-            let response = await api.get('/api/user');
             dispatch(logIn(response));
             history.push('/');
         }catch(err: any){

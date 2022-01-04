@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Users\Models;
 
-use App\Http\Controllers\LikeController;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Domains\Comments\Models\Comment;
+use App\Domains\Likes\Models\Like;
+use App\Domains\Posts\Models\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domains\Likes\Controllers;
 
-use App\Repositories\LikeRepository;
+use App\Domains\Likes\Repositories\LikeRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class LikeController extends Controller

@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domains\Follows\Controllers;
 
-use App\Repositories\FollowRepository;
+use App\Domains\Follows\Repositories\FollowRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class FollowController extends Controller

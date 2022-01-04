@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domains\Posts\Controllers;
 
-use App\Repositories\PostRepository;
+use App\Domains\Posts\Repositories\PostRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -19,7 +20,6 @@ class PostController extends Controller
     }
 
     public function store(Request $request): void{
-        // $this->postRepository->store([...$request->only('')]);
         if($request->file()){
             $file_name_for_front = $this->storeImage($request);
             $this->postRepository->store([

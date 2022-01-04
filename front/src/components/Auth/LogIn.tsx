@@ -4,11 +4,11 @@ import InputError from './InputError'
 import { useDispatch } from 'react-redux'
 import { logIn } from '../../store/actions/logIn'
 import { Link } from 'react-router-dom'
-import { useRef,useState,useEffect } from 'react'
+import { useRef,useState } from 'react'
 import { useHistory } from "react-router-dom"
 import { useError } from '../../utils/useError'
 import api from '../../utils/api'
-import AuthLoader from './AuthLoader'
+import AuthLoader from '../Loader/CircleLoader'
 import './auth.scss'
 import React from 'react'
 
@@ -18,31 +18,22 @@ const LogIn: React.FC = () => {
     const [loader,setLoader] = useState<boolean>(false);
     const [error,setError] = useState<object | null>(null);
     const {emailErr,passwordErr,userErr} = useError(error);
-    const [success,setSuccess] = useState<boolean>(false);
     const dispatch = useDispatch();
     const history = useHistory();
     const email = useRef<HTMLInputElement>(null);
     const password = useRef<HTMLInputElement>(null);
 
 
-    // useEffect(() => {
-    //     if(success)
-    //     dispatch(logIn());
-    // },[success])
-
     function logInUser(){
         api.get("/sanctum/csrf-cookie").then(async () => {
             try{
                 setLoader(true);
-                await api.post("/api/login", {
+                let response = await api.post("/api/login", {
                     email: email.current?.value,
                     password: password.current?.value 
                 });
-                let response = await api.get('/api/user');
                 history.push('/');
-                // setSuccess(true);
                 dispatch(logIn(response.data));
-                console.log(response);
             }catch(e: any){
                 setError(e);
             }finally{

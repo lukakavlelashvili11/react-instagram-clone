@@ -1,7 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace App\Domains\Posts\Repositories;
 
-use App\Models\Post;
+use App\Domains\Posts\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
 
 class PostRepository{

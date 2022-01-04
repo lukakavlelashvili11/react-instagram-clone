@@ -1,8 +1,7 @@
 <?php
-namespace App\Repositories;
+namespace App\Domains\Users\Repositories;
 
-use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
+use App\Domains\Users\Models\User;
 use Illuminate\Http\Request;
 
 class UserRepository{
@@ -21,12 +20,6 @@ class UserRepository{
         return $this->user
         ->where('id',$request->id)
         ->with(['followers','following'])
-        // ->with(['followers' => function($q){
-        //     $q->with('user');
-        // }])
-        // ->with(['following' => function($q){
-        //     $q->with('user');
-        // }])
         ->when(!!$request->post,function($q){
             $q->with(['posts' => function($q){
                 $q->with(['comments' => function($q){

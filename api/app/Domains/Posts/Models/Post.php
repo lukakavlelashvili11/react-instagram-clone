@@ -1,7 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Posts\Models;
 
+use App\Domains\Comments\Models\Comment;
+use App\Domains\Likes\Models\Like;
+use App\Domains\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

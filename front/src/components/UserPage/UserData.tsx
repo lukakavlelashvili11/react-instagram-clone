@@ -19,7 +19,9 @@ const UserData: React.FC<Props> = ({ data }) => {
     const [modalTitle,setModalTitle] = useState<string>('');
 
     function browseFiles(){
-        file.current!.click();
+        if(id === data?.id){
+            file.current!.click();
+        }
     }
 
     function uploadPhoto(e: React.ChangeEvent<HTMLInputElement>){
@@ -30,21 +32,19 @@ const UserData: React.FC<Props> = ({ data }) => {
             headers:{
                 'content-type': 'multipart/form-data'
             }
-        })
-        .then(res => {
-            console.log(res);
-        })
+        });
     }
 
     function haveFollowed(): boolean{
-        let res = !!data?.followers.filter(({ id }) => id === id);
-        console.log(res);
-        return res;
+        if(data?.followers.length === 0){
+            return false;
+        }else{
+            return !!data?.followers.filter(({ id }) => id === id);
+        }
     }
 
     async function follow(user_id?: number): Promise<void>{
         let data = await api.post(`/api/follow/save/${user_id}`);
-        console.log(data);
     }
 
     const EditButton = (): JSX.Element => <button className="edit-profile">Edit Profile</button>;
@@ -76,7 +76,7 @@ const UserData: React.FC<Props> = ({ data }) => {
                 <div className="user-info__data__inner">
                     <div className="user-name-actions">
                         <span className="username">{ data?.username }</span>
-                        { id == data?.id ? <EditButton/> : (!haveFollowed() && <FollowButton/>)}
+                        { id === data?.id ? <EditButton/> : (!haveFollowed() && <FollowButton/>)}
                     </div>
                     <div className="quantities">
                         <span>{ data?.posts.length } posts</span>

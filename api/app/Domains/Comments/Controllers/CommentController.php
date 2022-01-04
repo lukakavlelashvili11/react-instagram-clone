@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domains\Comments\Controllers;
 
-use App\Repositories\CommentRepository;
+use App\Domains\Comments\Repositories\CommentRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller

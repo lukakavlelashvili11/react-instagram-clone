@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Follows\Models;
 
-use Illuminate\Database\Eloquent\Factories\BelongsToManyRelationship;
+use App\Domains\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 

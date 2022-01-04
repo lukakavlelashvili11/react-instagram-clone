@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Domains\Users\Controllers;
 
-use App\Models\User;
-use App\Repositories\UserRepository;
-use Illuminate\Database\Eloquent\Collection;
+use App\Domains\Users\Models\User;
+use App\Domains\Users\Repositories\UserRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

@@ -8,19 +8,30 @@ import api from '../../utils/api'
 import IPost from '../../types/Post.type'
 
 interface IState{
-    updated: boolean;
+    updated: IPost;
 }
 
 const Main = () => {
 
-    const [posts,setPosts] = useState([]);
+    const [posts,setPosts] = useState<IPost[]>([]);
     const updatedState = useSelector((state: IState) => state.updated);
 
     useEffect(() => {
         (async () => {
             const res = await api.get('/api/post');
             setPosts(res.data);
+            console.log(res.data);
         })()
+    },[]);
+
+    useEffect(() => {
+        posts.forEach((post,i: number) => {
+            if(post.id === updatedState.id){
+                let newArr = [...posts];
+                newArr[i] = updatedState;
+                setPosts(newArr);
+            }
+        })
     },[updatedState])
 
     return(

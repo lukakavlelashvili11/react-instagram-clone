@@ -18,24 +18,20 @@ const Reacts: React.FC<Props> = ({ data }) => {
 
     const dispatch = useDispatch();
 
-    function likePost(){
-        api.post('/api/like/save',{
+    async function likePost(){
+        let updatedData = await api.post('/api/like/save',{
             user_id: data.user.id,
             post_id: data.id
-        })
-        .then(() => {
-            dispatch(updatePosts());
-        })
+        });
+        dispatch(updatePosts(updatedData.data));
     }
 
-    function unLikePost(){
-        api.post('/api/like/delete',{
+    async function unLikePost(){
+        let updatedData = await api.post('/api/like/delete',{
             user_id: data.user.id,
             post_id: data.id
         })
-        .then(() => {
-            dispatch(updatePosts());
-        })
+        dispatch(updatePosts(updatedData.data));
     }
 
     function checkIfPostIsLiked(likes: IPost["likes"]){

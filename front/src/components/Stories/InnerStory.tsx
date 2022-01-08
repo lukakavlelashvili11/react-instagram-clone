@@ -35,7 +35,7 @@ const InnerStory: React.FC = () => {
     // }
 
     useEffect(() => {
-        av.getColorAsync('http://localhost:8000/storage/uploads/4/posts/1641336033_Christmas-tree-holiday-pine.jpg',{crossorigin: "anonymous"})
+        av.getColorAsync('http://localhost:8000/storage/uploads/4/posts/1641336033_Christmas-tree-holiday-pine.jpg')
         .then((color) => {
             setAvColor(color.hex);
         })

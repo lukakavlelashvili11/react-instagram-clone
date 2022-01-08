@@ -49,7 +49,7 @@ const AddPost: React.FC = () => {
         })
         .then(() => {
             setModal(false);
-            dispatch(updatePosts());
+            // dispatch(updatePosts());
         })
     }
    

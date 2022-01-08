@@ -26,6 +26,21 @@ class PostRepository{
         ->latest('created_at')->get();
     }
 
+    public function getUpdatedPostWithId(int $id){
+        return $this->post
+        ->with([
+            'user',
+            'comments' => function($q){
+                $q->with('user')->latest('created_at');
+            },
+            'likes' => function($q){
+                $q->with('user')->latest('created_at');
+            }
+        ])
+        ->where('id',$id)
+        ->firstOrFail();
+    }
+
     public function store(array $postData): void{
         $this->post->create($postData);
     }

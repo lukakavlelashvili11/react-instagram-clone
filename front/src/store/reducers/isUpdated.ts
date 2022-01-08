@@ -1,12 +1,14 @@
+import IPost from "../../types/Post.type";
 
 type Action = {
-    type: 'updated'
+    type: 'updated',
+    payload: IPost
 }
 
 const isUpdated = (state: boolean = false,action: Action) => {
     switch(action.type){
         case 'updated':
-            return !state;
+            return action.payload;
         default: 
             return state;
     }

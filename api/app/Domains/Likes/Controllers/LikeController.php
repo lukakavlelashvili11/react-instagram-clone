@@ -14,11 +14,13 @@ class LikeController extends Controller
         $this->likeRepository = $likeRepository;
     }
 
-    public function store(Request $request): void{
-        $this->likeRepository->store($request->only('user_id','post_id'));
+    public function store(Request $request){
+        $data = $this->likeRepository->store($request->only('user_id','post_id'));
+        return response()->json($data);
     }
 
-    public function delete(Request $request): void{
-        $this->likeRepository->delete($request->only('user_id','post_id'));
+    public function delete(Request $request){
+        $data = $this->likeRepository->delete($request->only('user_id','post_id'));
+        return response()->json($data);
     }
 }

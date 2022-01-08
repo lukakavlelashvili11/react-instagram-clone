@@ -3,6 +3,7 @@
 namespace App\Domains\Likes\Controllers;
 
 use App\Domains\Likes\Repositories\LikeRepository;
+use App\Domains\Posts\Repositories\PostRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,16 @@ class LikeController extends Controller
     }
 
     public function store(Request $request){
-        $data = $this->likeRepository->store($request->only('user_id','post_id'));
-        return response()->json($data);
+        $this->likeRepository->store($request->only('user_id','post_id'));
+        return $this->getUpdatedPost($request->post_id);
     }
 
     public function delete(Request $request){
-        $data = $this->likeRepository->delete($request->only('user_id','post_id'));
-        return response()->json($data);
+        $this->likeRepository->delete($request->only('user_id','post_id'));
+        return $this->getUpdatedPost($request->post_id);
+    }
+
+    public function getUpdatedPost(int $id){
+        return response()->json(app(PostRepository::class)->getUpdatedPostWithId($id));
     }
 }

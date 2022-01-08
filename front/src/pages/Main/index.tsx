@@ -30,6 +30,9 @@ const Main = () => {
                 let newArr = [...posts];
                 newArr[i] = updatedState;
                 setPosts(newArr);
+            }else{
+                let newArr = [updatedState,...posts];
+                setPosts(newArr);
             }
         })
     },[updatedState])

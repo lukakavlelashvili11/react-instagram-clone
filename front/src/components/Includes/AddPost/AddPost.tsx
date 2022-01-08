@@ -47,9 +47,9 @@ const AddPost: React.FC = () => {
                 'content-type': 'multipart/form-data'
             }
         })
-        .then(() => {
+        .then((resp) => {
             setModal(false);
-            // dispatch(updatePosts());
+            dispatch(updatePosts(resp.data));
         })
     }
    

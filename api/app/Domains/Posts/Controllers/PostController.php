@@ -2,6 +2,7 @@
 
 namespace App\Domains\Posts\Controllers;
 
+use App\Domains\Posts\Models\Post;
 use App\Domains\Posts\Repositories\PostRepository;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class PostController extends Controller
         return response()->json($data);
     }
 
-    public function store(Request $request): void{
+    public function store(Request $request): Post{
         if($request->file()){
             $file_name_for_front = $this->storeImage($request);
             $this->postRepository->store([
@@ -28,6 +29,7 @@ class PostController extends Controller
                 'imageurl' => $file_name_for_front
             ]);
         }
+        return $this->postRepository->getNewPost();
     }
 
     public function delete(Request $request): void{

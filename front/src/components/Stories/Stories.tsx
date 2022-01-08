@@ -1,5 +1,6 @@
 import UserPic from '../UserPic/UserPic'
 import './stories.scss'
+import AddPostIcon from '../../assets/img/headerIcons/add-post.png'
 import React from 'react'
 
 const Stories: React.FC = () => {
@@ -20,6 +21,7 @@ const Stories: React.FC = () => {
     return(
         <div className="stories">
             {data.map(d => <UserProfile key={d}/>)}
+            <img className="add-story" width="50" src={AddPostIcon} alt="add story"/>
         </div>
     )
 }

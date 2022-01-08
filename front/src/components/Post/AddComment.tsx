@@ -23,9 +23,9 @@ const AddComment: React.FC<Props> = ({ data }) => {
             post_id: data.id,
             text: comment.current?.value
         })
-        .then(() => {
+        .then((resp) => {
                 comment.current!.value = '';
-                dispatch(updatePosts());
+                dispatch(updatePosts(resp.data));
                 setSuccess(false);
             })
     }

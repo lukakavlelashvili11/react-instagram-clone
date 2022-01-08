@@ -8,7 +8,6 @@ interface IUser {
     name: string;
     email: string;
     profile_pic: string;
-    userPic: string;
     posts: IPost[];
     followers: IUser[];
     following: IUser[];

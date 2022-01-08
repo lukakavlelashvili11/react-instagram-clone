@@ -41,6 +41,22 @@ class PostRepository{
         ->firstOrFail();
     }
 
+    public function getNewPost(){
+        return $this->post
+        ->with([
+            'user',
+            'comments' => function($q){
+                $q->with('user')->latest('created_at');
+            },
+            'likes' => function($q){
+                $q->with('user')->latest('created_at');
+            }
+        ])
+        ->where('user_id',auth()->user()->id)
+        ->latest('created_at')
+        ->first();
+    }
+
     public function store(array $postData): void{
         $this->post->create($postData);
     }

@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie'
 
 const UserSettings: React.FC = () => {
 
-    const {userPic,id} = useUser();
+    const {profile_pic,id} = useUser();
     const [options,setOptions] = useState<boolean>(false);
     const cookie = new Cookies();
 
@@ -33,7 +33,7 @@ const UserSettings: React.FC = () => {
     return(
         <div>
             <div onClick={ () => setOptions(!options) }>
-                <UserPic size={25} imageUrl={userPic}/>
+                <UserPic size={25} imageUrl={profile_pic}/>
             </div>
             {options && <Options/>}
         </div>
